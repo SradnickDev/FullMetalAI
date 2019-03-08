@@ -1,4 +1,4 @@
-[![Full Metal AI Logo](img/logo.png)](https://fullmetalai.itch.io)
+[![Full Metal AI Logo](img/Logo.png)](https://fullmetalai.itch.io)
 
 ### Full Metal AI (Student Project)
 
