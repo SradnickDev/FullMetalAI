@@ -1,4 +1,4 @@
-[![Full Metal AI Logo](img/logo.png)](https://fullmetalai.itch.io)
+[![Full Metal AI Logo](img/Logo.png)](https://fullmetalai.itch.io)
 
 ### Full Metal AI (Student Project)
 
@@ -15,7 +15,8 @@ in which the player has to overcome waves of hostile drones.
 - Game Modes for additional challenges and a richer gameplay experience
 - Power ups for immediate tactical improvement
 
-[![Gameplay Screenshots](img/Screen_2.png)](https://fullmetalai.itch.io)
+[![Gameplay Screenshots / Video](img/Screen_2.png)](https://youtu.be/6XhnEPoo0u4)
+https://youtu.be/6XhnEPoo0u4
 
 ### Documentation and Build
 
