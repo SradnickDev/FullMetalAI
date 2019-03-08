@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Maps/Env/BuildingParts/PartPillar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/Env/BuildingParts/PartRoofBeam.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Maps/Env/BuildingParts/PartRoofConnector.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Maps/Env/BuildingParts/PartRoofGrid.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Maps/Env/Buildings/Corner.tscn" type="PackedScene" id=5]
+
+[node name="Trash Template" type="Spatial" index="0"]
+
+[node name="PartPillar" parent="." index="0" instance=ExtResource( 1 )]
+
+transform = Transform( -0.34202, -0.925417, 0.163176, 0, 0.173648, 0.984808, -0.939693, 0.336824, -0.0593912, 0, -0.5, -1 )
+
+[node name="PartRoofBeam" parent="." index="1" instance=ExtResource( 2 )]
+
+transform = Transform( 0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, 0.819152, 0, -3.5, 7.75 )
+
+[node name="PartRoofConnector" parent="." index="2" instance=ExtResource( 3 )]
+
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -10.8, -7 )
+
+[node name="PartRoofGrid" parent="." index="3" instance=ExtResource( 4 )]
+
+transform = Transform( -1.55758e-007, -3.56331, -2.49506, 4.35, -1.90145e-007, 0, -1.09063e-007, -2.49506, 3.56331, 15, -0.25, 0 )
+
+[node name="Corner" parent="." index="4" instance=ExtResource( 5 )]
+
+transform = Transform( 0.69976, -1.3125, 0.194114, 1.11154, 0.69976, 0.724444, -0.724444, -0.194114, 1.29904, -8, -1.5, 0 )
+
+

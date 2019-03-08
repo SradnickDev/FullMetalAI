@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Maps/Env/BuildingParts/PartBuildingMiddle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/Env/BuildingParts/PartBuildingCorner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Maps/Env/BuildingParts/PartBuildingEnd.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Maps/Env/BuildingParts/PartWall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Maps/Env/BuildingParts/PartCorner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Maps/Env/BuildingParts/PartRoofBeam.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Maps/Env/BuildingParts/PartPillar.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Maps/Env/Decoration/BuildingDecoration/BuildingGate.tscn" type="PackedScene" id=8]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 4.95733, 2.02668, 2.86019 )
+
+[node name="BuildingShortL" type="StaticBody" index="0"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 8
+collision_mask = 0
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="PartBuildingMiddle" parent="." index="0" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0339301, 1.75, -2 )
+shape = SubResource( 1 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape3" type="CollisionShape" parent="." index="2"]
+
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 2.0419, 1.75, 0 )
+shape = SubResource( 1 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="PartBuildingCorner" parent="." index="3" instance=ExtResource( 2 )]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 2, 0, -2 )
+
+[node name="PartBuildingEnd" parent="." index="4" instance=ExtResource( 3 )]
+
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 2, 0, 2 )
+
+[node name="PartWall" parent="." index="5" instance=ExtResource( 4 )]
+
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -4, 0, -2 )
+
+[node name="PartCorner2" parent="." index="6" instance=ExtResource( 5 )]
+
+transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -4, 0, -4 )
+
+[node name="PartCorner4" parent="." index="7" instance=ExtResource( 5 )]
+
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -4, 0, 0 )
+
+[node name="PartRoofBeam" parent="." index="8" instance=ExtResource( 6 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -2 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartPillar" parent="." index="9" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4 )
+
+[node name="PartPillar2" parent="." index="10" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
+
+[node name="PartPillar3" parent="." index="11" instance=ExtResource( 7 )]
+
+[node name="BuildingGate" parent="." index="12" instance=ExtResource( 8 )]
+
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, -2, 0, -4 )
+
+

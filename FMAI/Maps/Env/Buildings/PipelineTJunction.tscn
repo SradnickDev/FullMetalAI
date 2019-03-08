@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Maps/Env/Decoration/Pipes/PipeTJunction.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/Env/Decoration/Pipes/Pipe4m.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Maps/Env/Decoration/Pipes/PipePillarSmall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Maps/Env/Decoration/Pipes/PipeFlow.tscn" type="PackedScene" id=4]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 0.414329, 0.407439, 4.01769 )
+
+[node name="PipelineTJunction" type="StaticBody"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 8
+collision_mask = 7
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="PipeTJunction" parent="." index="0" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+shape = SubResource( 1 )
+disabled = false
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Pipe4m" parent="." index="2" instance=ExtResource( 2 )]
+
+[node name="PipePillarSmall" parent="." index="3" instance=ExtResource( 3 )]
+
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.5, 0 )
+
+[node name="PipeFlow" parent="." index="4" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
+
+

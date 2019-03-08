@@ -1,0 +1,246 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Weapon/Scripts/Rocket.gd" type="Script" id=1]
+[ext_resource path="res://VFX/Assets/Objects/Rocket.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://VFX/Weapons/RocketLauncher/RocketTrail.tscn" type="PackedScene" id=3]
+[ext_resource path="res://PowerUps/EffectParent.gd" type="Script" id=4]
+[ext_resource path="res://Audio/Rocket_Impact.wav" type="AudioStream" id=5]
+[ext_resource path="res://Audio/Audio.gd" type="Script" id=6]
+[ext_resource path="res://VFX/Environment/Explosion02.tscn" type="PackedScene" id=7]
+[ext_resource path="res://VFX/Utilities/EffectPlayer.gd" type="Script" id=8]
+
+[sub_resource type="SpatialMaterial" id=1]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 0.316406, 0.316406, 0.316406, 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Albedo" ]
+
+[sub_resource type="SpatialMaterial" id=2]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 1, 1, 1, 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+
+[sub_resource type="SphereShape" id=3]
+
+radius = 1.0
+
+[sub_resource type="SphereShape" id=4]
+
+radius = 1.0
+
+[node name="Rocket" type="KinematicBody" groups=[
+"Projectile",
+]]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 4
+collision_mask = 10
+axis_lock_linear_x = false
+axis_lock_linear_y = false
+axis_lock_linear_z = false
+axis_lock_angular_x = false
+axis_lock_angular_y = false
+axis_lock_angular_z = false
+collision/safe_margin = 0.001
+script = ExtResource( 1 )
+_sections_unfolded = [ "Audio Bus", "Collision", "Transform" ]
+lifeTime = 4.0
+speed = 40.0
+damage = 100.0
+radius = 3
+explosionForce = 15.0
+areaCollisionPath = NodePath("AreaCollision")
+
+[node name="MeshInstance" type="MeshInstance" parent="." index="0"]
+
+transform = Transform( -1, 0, -1.50996e-007, 0, 1, 0, 1.50996e-007, 0, -1, 0, 0, 0 )
+layers = 1
+material_override = null
+cast_shadow = 0
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 2 )
+skeleton = NodePath("..")
+material/0 = SubResource( 1 )
+material/1 = SubResource( 2 )
+_sections_unfolded = [ "Geometry", "Transform", "Visibility", "material" ]
+
+[node name="Collision" type="CollisionShape" parent="." index="1"]
+
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+shape = SubResource( 3 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="AreaCollision" type="Area" parent="." index="2"]
+
+editor/display_folded = true
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 4
+collision_mask = 2
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="AreaCollision" index="0"]
+
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
+shape = SubResource( 4 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="RocketTrail" parent="." index="3" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="EffectParent" type="Spatial" parent="." index="4"]
+
+script = ExtResource( 4 )
+
+[node name="HitAudio" type="AudioStreamPlayer" parent="EffectParent" index="0"]
+
+stream = ExtResource( 5 )
+volume_db = -10.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+script = ExtResource( 6 )
+
+[node name="Explosion01" parent="EffectParent" index="1" instance=ExtResource( 7 )]
+
+script = ExtResource( 8 )
+forceRestart = false
+
+[node name="Tween" type="Tween" parent="." index="5"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="LifeTime" type="Timer" parent="." index="6"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[connection signal="finished" from="EffectParent/HitAudio" to="EffectParent/HitAudio" method="_on_HitAudio_finished"]
+
+

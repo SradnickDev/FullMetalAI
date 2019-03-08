@@ -1,0 +1,699 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://WaveSystem/Spawner.gd" type="Script" id=1]
+[ext_resource path="res://WaveSystem/Wave.gd" type="Script" id=2]
+[ext_resource path="res://WeightedObjects/WeightedObjects.gd" type="Script" id=3]
+[ext_resource path="res://WeightedObjects/WeightedObject.gd" type="Script" id=4]
+[ext_resource path="res://Enemy/DroneEnemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemy/TankEnemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemy/KamikazeEnemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Enemy/CloakerEnemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemy/Scripts/EnemyCount.gd" type="Script" id=9]
+[ext_resource path="res://WaveSystem/WaveDisplay.gd" type="Script" id=10]
+[ext_resource path="res://Menu/HUD/WavePanel.png" type="Texture" id=11]
+[ext_resource path="res://Menu/Graphics/theme/MasterTheme.tres" type="Theme" id=12]
+[ext_resource path="res://Menu/Graphics/theme/defaultTheme.tres" type="Theme" id=13]
+[ext_resource path="res://Menu/Graphics/theme/font/FontDerelictRegularBigx2.tres" type="DynamicFont" id=14]
+[ext_resource path="res://Audio/Wave/WaveIncoming.wav" type="AudioStream" id=15]
+[ext_resource path="res://Audio/Wave/WaveAccomplished.wav" type="AudioStream" id=16]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "Hide"
+length = 1.0
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "Show"
+length = 1.0
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="WaveSystem" type="Spatial" index="0"]
+
+script = ExtResource( 1 )
+disabled = false
+waveStartDelay = 3.0
+playerPath = null
+
+[node name="Delay" type="Timer" parent="." index="0"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = true
+autostart = false
+
+[node name="BetweenSpawnTimer" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="WaveStartDelay" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="DefaultPattern" type="Node" parent="." index="3"]
+
+editor/display_folded = true
+script = ExtResource( 2 )
+setDefault = false
+overrideWave = 0
+increasePerWave = 0
+defaultAmount = 15
+timeBetweenSpawn = 0.4
+randomSpawnRange = 1.0
+
+[node name="WeightedObject" type="Node" parent="DefaultPattern" index="0"]
+
+script = ExtResource( 3 )
+
+[node name="WeightedObjectDrone" type="Node" parent="DefaultPattern/WeightedObject" index="0"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 5 )
+weight = 100.0
+
+[node name="PatternParent" type="Node" parent="." index="4"]
+
+editor/display_folded = true
+
+[node name="Wave2" type="Node" parent="PatternParent" index="0"]
+
+editor/display_folded = true
+script = ExtResource( 2 )
+setDefault = false
+overrideWave = 2
+increasePerWave = 0
+defaultAmount = 20
+timeBetweenSpawn = 0.4
+randomSpawnRange = 1.0
+
+[node name="WeightedObject" type="Node" parent="PatternParent/Wave2" index="0"]
+
+script = ExtResource( 3 )
+
+[node name="WeightedObjectDrone" type="Node" parent="PatternParent/Wave2/WeightedObject" index="0"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 5 )
+weight = 75.0
+
+[node name="WeightedObjectTank" type="Node" parent="PatternParent/Wave2/WeightedObject" index="1"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 6 )
+weight = 25.0
+
+[node name="Wave3" type="Node" parent="PatternParent" index="1"]
+
+editor/display_folded = true
+script = ExtResource( 2 )
+setDefault = false
+overrideWave = 3
+increasePerWave = 0
+defaultAmount = 25
+timeBetweenSpawn = 0.4
+randomSpawnRange = 1.0
+
+[node name="WeightedObject" type="Node" parent="PatternParent/Wave3" index="0"]
+
+script = ExtResource( 3 )
+
+[node name="WeightedObjectDrone" type="Node" parent="PatternParent/Wave3/WeightedObject" index="0"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 5 )
+weight = 50.0
+
+[node name="WeightedObjectTank" type="Node" parent="PatternParent/Wave3/WeightedObject" index="1"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 6 )
+weight = 25.0
+
+[node name="WeightedObjectKamikaze" type="Node" parent="PatternParent/Wave3/WeightedObject" index="2"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 7 )
+weight = 25.0
+
+[node name="Wave4" type="Node" parent="PatternParent" index="2"]
+
+editor/display_folded = true
+script = ExtResource( 2 )
+setDefault = false
+overrideWave = 4
+increasePerWave = 0
+defaultAmount = 30
+timeBetweenSpawn = 0.4
+randomSpawnRange = 1.0
+
+[node name="WeightedObject" type="Node" parent="PatternParent/Wave4" index="0"]
+
+script = ExtResource( 3 )
+
+[node name="WeightedObjectDrone" type="Node" parent="PatternParent/Wave4/WeightedObject" index="0"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 5 )
+weight = 40.0
+
+[node name="WeightedObjectTank" type="Node" parent="PatternParent/Wave4/WeightedObject" index="1"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 6 )
+weight = 20.0
+
+[node name="WeightedObjectCloaker2" type="Node" parent="PatternParent/Wave4/WeightedObject" index="2"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 8 )
+weight = 20.0
+
+[node name="WeightedObjectKamikaze" type="Node" parent="PatternParent/Wave4/WeightedObject" index="3"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 7 )
+weight = 20.0
+
+[node name="Wave5" type="Node" parent="PatternParent" index="3"]
+
+editor/display_folded = true
+script = ExtResource( 2 )
+setDefault = false
+overrideWave = 5
+increasePerWave = 0
+defaultAmount = 70
+timeBetweenSpawn = 0.2
+randomSpawnRange = 1.0
+
+[node name="WeightedObject" type="Node" parent="PatternParent/Wave5" index="0"]
+
+script = ExtResource( 3 )
+
+[node name="WeightedObjectDrone" type="Node" parent="PatternParent/Wave5/WeightedObject" index="0"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 5 )
+weight = 25.0
+
+[node name="WeightedObjectTank" type="Node" parent="PatternParent/Wave5/WeightedObject" index="1"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 6 )
+weight = 25.0
+
+[node name="WeightedObjectCloaker2" type="Node" parent="PatternParent/Wave5/WeightedObject" index="2"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 8 )
+weight = 25.0
+
+[node name="WeightedObjectKamikaze" type="Node" parent="PatternParent/Wave5/WeightedObject" index="3"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 7 )
+weight = 25.0
+
+[node name="Wave6" type="Node" parent="PatternParent" index="4"]
+
+editor/display_folded = true
+script = ExtResource( 2 )
+setDefault = true
+overrideWave = 6
+increasePerWave = 5
+defaultAmount = 5
+timeBetweenSpawn = 0.4
+randomSpawnRange = 1.0
+
+[node name="WeightedObject" type="Node" parent="PatternParent/Wave6" index="0"]
+
+editor/display_folded = true
+script = ExtResource( 3 )
+
+[node name="WeightedObjectDrone" type="Node" parent="PatternParent/Wave6/WeightedObject" index="0"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 5 )
+weight = 40.0
+
+[node name="WeightedObjectTank" type="Node" parent="PatternParent/Wave6/WeightedObject" index="1"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 6 )
+weight = 20.0
+
+[node name="WeightedObjectCloaker2" type="Node" parent="PatternParent/Wave6/WeightedObject" index="2"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 8 )
+weight = 20.0
+
+[node name="WeightedObjectKamikaze" type="Node" parent="PatternParent/Wave6/WeightedObject" index="3"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 7 )
+weight = 20.0
+
+[node name="Wave8" type="Node" parent="PatternParent" index="5"]
+
+editor/display_folded = true
+script = ExtResource( 2 )
+setDefault = false
+overrideWave = 8
+increasePerWave = 0
+defaultAmount = 100
+timeBetweenSpawn = 0.2
+randomSpawnRange = 1.0
+
+[node name="WeightedObject" type="Node" parent="PatternParent/Wave8" index="0"]
+
+script = ExtResource( 3 )
+
+[node name="WeightedObjectDrone" type="Node" parent="PatternParent/Wave8/WeightedObject" index="0"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 5 )
+weight = 50.0
+
+[node name="WeightedObjectCloaker2" type="Node" parent="PatternParent/Wave8/WeightedObject" index="1"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 8 )
+weight = 50.0
+
+[node name="Wave9" type="Node" parent="PatternParent" index="6"]
+
+editor/display_folded = true
+script = ExtResource( 2 )
+setDefault = true
+overrideWave = 9
+increasePerWave = 5
+defaultAmount = 0
+timeBetweenSpawn = 0.4
+randomSpawnRange = 1.0
+
+[node name="WeightedObject" type="Node" parent="PatternParent/Wave9" index="0"]
+
+script = ExtResource( 3 )
+
+[node name="WeightedObjectDrone" type="Node" parent="PatternParent/Wave9/WeightedObject" index="0"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 5 )
+weight = 40.0
+
+[node name="WeightedObjectTank" type="Node" parent="PatternParent/Wave9/WeightedObject" index="1"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 6 )
+weight = 20.0
+
+[node name="WeightedObjectCloaker2" type="Node" parent="PatternParent/Wave9/WeightedObject" index="2"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 8 )
+weight = 20.0
+
+[node name="WeightedObjectKamikaze" type="Node" parent="PatternParent/Wave9/WeightedObject" index="3"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 7 )
+weight = 20.0
+
+[node name="Wave11" type="Node" parent="PatternParent" index="7"]
+
+editor/display_folded = true
+script = ExtResource( 2 )
+setDefault = false
+overrideWave = 11
+increasePerWave = 0
+defaultAmount = 130
+timeBetweenSpawn = 0.2
+randomSpawnRange = 1.0
+
+[node name="WeightedObject" type="Node" parent="PatternParent/Wave11" index="0"]
+
+script = ExtResource( 3 )
+
+[node name="WeightedObjectCloaker2" type="Node" parent="PatternParent/Wave11/WeightedObject" index="0"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 8 )
+weight = 40.0
+
+[node name="WeightedObjectKamikaze" type="Node" parent="PatternParent/Wave11/WeightedObject" index="1"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 7 )
+weight = 60.0
+
+[node name="Wave12" type="Node" parent="PatternParent" index="8"]
+
+editor/display_folded = true
+script = ExtResource( 2 )
+setDefault = true
+overrideWave = 12
+increasePerWave = 5
+defaultAmount = -5
+timeBetweenSpawn = 0.4
+randomSpawnRange = 1.0
+
+[node name="WeightedObject" type="Node" parent="PatternParent/Wave12" index="0"]
+
+script = ExtResource( 3 )
+
+[node name="WeightedObjectDrone" type="Node" parent="PatternParent/Wave12/WeightedObject" index="0"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 5 )
+weight = 40.0
+
+[node name="WeightedObjectTank" type="Node" parent="PatternParent/Wave12/WeightedObject" index="1"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 6 )
+weight = 20.0
+
+[node name="WeightedObjectCloaker2" type="Node" parent="PatternParent/Wave12/WeightedObject" index="2"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 8 )
+weight = 20.0
+
+[node name="WeightedObjectKamikaze" type="Node" parent="PatternParent/Wave12/WeightedObject" index="3"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 7 )
+weight = 20.0
+
+[node name="Wave14" type="Node" parent="PatternParent" index="9"]
+
+editor/display_folded = true
+script = ExtResource( 2 )
+setDefault = false
+overrideWave = 14
+increasePerWave = 0
+defaultAmount = 160
+timeBetweenSpawn = 0.2
+randomSpawnRange = 1.0
+
+[node name="WeightedObject" type="Node" parent="PatternParent/Wave14" index="0"]
+
+script = ExtResource( 3 )
+
+[node name="WeightedObjectCloaker" type="Node" parent="PatternParent/Wave14/WeightedObject" index="0"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 8 )
+weight = 100.0
+
+[node name="Wave15" type="Node" parent="PatternParent" index="10"]
+
+editor/display_folded = true
+script = ExtResource( 2 )
+setDefault = true
+overrideWave = 15
+increasePerWave = 5
+defaultAmount = -10
+timeBetweenSpawn = 0.4
+randomSpawnRange = 1.0
+
+[node name="WeightedObject" type="Node" parent="PatternParent/Wave15" index="0"]
+
+script = ExtResource( 3 )
+
+[node name="WeightedObjectDrone" type="Node" parent="PatternParent/Wave15/WeightedObject" index="0"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 5 )
+weight = 40.0
+
+[node name="WeightedObjectTank" type="Node" parent="PatternParent/Wave15/WeightedObject" index="1"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 6 )
+weight = 20.0
+
+[node name="WeightedObjectCloaker2" type="Node" parent="PatternParent/Wave15/WeightedObject" index="2"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 8 )
+weight = 20.0
+
+[node name="WeightedObjectKamikaze" type="Node" parent="PatternParent/Wave15/WeightedObject" index="3"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 7 )
+weight = 20.0
+
+[node name="Wave18" type="Node" parent="PatternParent" index="11"]
+
+editor/display_folded = true
+script = ExtResource( 2 )
+setDefault = false
+overrideWave = 18
+increasePerWave = 0
+defaultAmount = 200
+timeBetweenSpawn = 0.2
+randomSpawnRange = 1.0
+
+[node name="WeightedObject" type="Node" parent="PatternParent/Wave18" index="0"]
+
+script = ExtResource( 3 )
+
+[node name="WeightedObjectKamikaze" type="Node" parent="PatternParent/Wave18/WeightedObject" index="0"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 7 )
+weight = 100.0
+
+[node name="Wave19" type="Node" parent="PatternParent" index="12"]
+
+editor/display_folded = true
+script = ExtResource( 2 )
+setDefault = true
+overrideWave = 19
+increasePerWave = 20
+defaultAmount = -300
+timeBetweenSpawn = 0.4
+randomSpawnRange = 1.0
+
+[node name="WeightedObject" type="Node" parent="PatternParent/Wave19" index="0"]
+
+script = ExtResource( 3 )
+
+[node name="WeightedObjectDrone" type="Node" parent="PatternParent/Wave19/WeightedObject" index="0"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 5 )
+weight = 40.0
+
+[node name="WeightedObjectTank" type="Node" parent="PatternParent/Wave19/WeightedObject" index="1"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 6 )
+weight = 20.0
+
+[node name="WeightedObjectCloaker2" type="Node" parent="PatternParent/Wave19/WeightedObject" index="2"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 8 )
+weight = 20.0
+
+[node name="WeightedObjectKamikaze" type="Node" parent="PatternParent/Wave19/WeightedObject" index="3"]
+
+script = ExtResource( 4 )
+targetObject = ExtResource( 7 )
+weight = 20.0
+
+[node name="EnemyCount" type="Spatial" parent="." index="5" groups=[
+"EnemyCount",
+]]
+
+script = ExtResource( 9 )
+
+[node name="WaveDisplay" type="Control" parent="." index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 10 )
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Stats" type="NinePatchRect" parent="WaveDisplay" index="0"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -556.0
+margin_bottom = 84.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 390, 84 )
+patch_margin_left = 108
+patch_margin_top = 33
+patch_margin_right = 71
+patch_margin_bottom = 30
+_sections_unfolded = [ "Patch Margin" ]
+
+[node name="Enemycount" type="Label" parent="WaveDisplay/Stats" index="0"]
+
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -356.0
+margin_top = -25.0
+margin_right = -30.0
+margin_bottom = 12.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = ExtResource( 12 )
+text = "Enemyies Detected: 0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Theme" ]
+
+[node name="Wavecount" type="Label" parent="WaveDisplay/Stats" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+margin_left = 31.0
+margin_top = -25.0
+margin_right = 218.0
+margin_bottom = 12.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = ExtResource( 12 )
+text = "Wave : x"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Theme" ]
+
+[node name="Label" type="Label" parent="WaveDisplay" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_top = 207.0
+margin_bottom = 287.0
+rect_min_size = Vector2( 300, 80 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 13 )
+custom_fonts/font = ExtResource( 14 )
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Hint", "Rect", "Size Flags", "Theme", "custom_fonts" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WaveDisplay" index="2"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Hide = SubResource( 1 )
+anims/Show = SubResource( 2 )
+blend_times = [  ]
+
+[node name="WaveStart" type="AudioStreamPlayer" parent="." index="7"]
+
+stream = ExtResource( 15 )
+volume_db = 10.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "VFX"
+
+[node name="WaveAccomplished" type="AudioStreamPlayer" parent="." index="8"]
+
+stream = ExtResource( 16 )
+volume_db = 10.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "VFX"
+
+[connection signal="nextWaveStarts" from="." to="WaveDisplay" method="onWaveSystemNextWaveStarts"]
+
+[connection signal="waveDelay" from="." to="WaveDisplay" method="onWaveSystemWaveDelay"]
+
+[connection signal="timeout" from="Delay" to="." method="delay"]
+
+[connection signal="timeout" from="BetweenSpawnTimer" to="." method="processSpawn"]
+
+[connection signal="timeout" from="WaveStartDelay" to="WaveDisplay" method="onWaveStartDelayTimeout"]
+
+[connection signal="timeout" from="WaveStartDelay" to="." method="startNextWave"]
+
+[connection signal="ZeroEnemy" from="EnemyCount" to="WaveDisplay" method="onEnemyCountZeroEnemy"]
+
+[connection signal="ZeroEnemy" from="EnemyCount" to="." method="onZeroEnemy"]
+
+

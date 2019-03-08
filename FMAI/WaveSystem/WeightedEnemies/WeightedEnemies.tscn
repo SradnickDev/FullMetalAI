@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://WeightedObjects/WeightedObjects.gd" type="Script" id=1]
+[ext_resource path="res://WeightedObjects/WeightedObject.gd" type="Script" id=2]
+[ext_resource path="res://Enemy/KamikazeEnemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemy/DroneEnemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemy/TankEnemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemy/CloakerEnemy.tscn" type="PackedScene" id=6]
+
+
+[node name="WeightedEnemies" type="Node"]
+
+script = ExtResource( 1 )
+
+[node name="KamikazeEnemy" type="Node" parent="." index="0"]
+
+script = ExtResource( 2 )
+targetObject = ExtResource( 3 )
+weight = 50.0
+
+[node name="DefaultEnemy" type="Node" parent="." index="1"]
+
+script = ExtResource( 2 )
+targetObject = ExtResource( 4 )
+weight = 50.0
+
+[node name="TankEnemy" type="Node" parent="." index="2"]
+
+script = ExtResource( 2 )
+targetObject = ExtResource( 5 )
+weight = 50.0
+
+[node name="CloakerEnemy" type="Node" parent="." index="3"]
+
+script = ExtResource( 2 )
+targetObject = ExtResource( 6 )
+weight = 50.0
+
+

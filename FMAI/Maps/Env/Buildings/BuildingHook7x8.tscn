@@ -1,0 +1,419 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Maps/Env/Decoration/BuildingDecoration/RoofArmored.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/Env/BuildingParts/PartBuildingCorner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Maps/Env/BuildingParts/PartPillar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Maps/Env/BuildingParts/PartRoofConnector.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Maps/Env/BuildingParts/PartBuildingSide.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Maps/Env/BuildingParts/PartBuildingSideReinforced.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Maps/Env/BuildingParts/PartRoofBeam.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Maps/Env/BuildingParts/PartRoof.tscn" type="PackedScene" id=8]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 4.98568, 1.94297, 16.8575 )
+
+[sub_resource type="BoxShape" id=2]
+
+extents = Vector3( 4.84454, 1.90459, 8.89269 )
+
+[node name="BuildingHook7x8" type="StaticBody" index="0"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 8
+collision_mask = 0
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="RoofArmored" parent="." index="0" instance=ExtResource( 1 )]
+
+transform = Transform( 4.47035e-008, 0, -1, 0, 1, 0, 1, 0, 4.47035e-008, 0, 0, 0 )
+
+[node name="RoofArmored2" parent="." index="1" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -8 )
+
+[node name="RoofArmored3" parent="." index="2" instance=ExtResource( 1 )]
+
+transform = Transform( 5.21541e-008, 0, 1, 0, 1, 0, -1, 0, 5.21541e-008, 0, 0, -24 )
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="3"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0339301, 2, -12 )
+shape = SubResource( 1 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2" type="CollisionShape" parent="." index="4"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0339, 2, -4 )
+shape = SubResource( 2 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape3" type="CollisionShape" parent="." index="5"]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 11.0339, 2, 0 )
+shape = SubResource( 2 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="PartBuildingCorner" parent="." index="6" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 2 )
+
+[node name="PartBuildingCorner2" parent="." index="7" instance=ExtResource( 2 )]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 2, 0, -26 )
+
+[node name="PartBuildingCorner5" parent="." index="8" instance=ExtResource( 2 )]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 22, 0, -10 )
+
+[node name="PartBuildingCorner3" parent="." index="9" instance=ExtResource( 2 )]
+
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, -2, 0, -26 )
+
+[node name="PartBuildingCorner6" parent="." index="10" instance=ExtResource( 2 )]
+
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 18, 0, -10 )
+
+[node name="PartBuildingCorner4" parent="." index="11" instance=ExtResource( 2 )]
+
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -2, 0, 2 )
+
+[node name="PartPillar1" parent="." index="12" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0 )
+
+[node name="PartPillar2" parent="." index="13" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="PartPillar3" parent="." index="14" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 0 )
+
+[node name="PartPillar4" parent="." index="15" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -24 )
+
+[node name="PartPillar6" parent="." index="16" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -28 )
+
+[node name="PartPillar5" parent="." index="17" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -24 )
+
+[node name="PartPillar7" parent="." index="18" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -12 )
+
+[node name="PartPillar8" parent="." index="19" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -12 )
+
+[node name="PartPillar9" parent="." index="20" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -20 )
+
+[node name="PartPillar10" parent="." index="21" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -20 )
+
+[node name="PartPillar11" parent="." index="22" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4 )
+
+[node name="PartPillar12" parent="." index="23" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4 )
+
+[node name="PartPillar13" parent="." index="24" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -16 )
+
+[node name="PartPillar14" parent="." index="25" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -16 )
+
+[node name="PartPillar15" parent="." index="26" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8 )
+
+[node name="PartPillar16" parent="." index="27" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8 )
+
+[node name="PartPillar17" parent="." index="28" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -12 )
+
+[node name="PartPillar18" parent="." index="29" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -4 )
+
+[node name="PartPillar19" parent="." index="30" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -8 )
+
+[node name="PartPillar20" parent="." index="31" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -8 )
+
+[node name="PartPillar21" parent="." index="32" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4 )
+
+[node name="PartPillar27" parent="." index="33" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -4 )
+
+[node name="PartPillar22" parent="." index="34" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 4 )
+
+[node name="PartPillar23" parent="." index="35" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 4 )
+
+[node name="PartPillar24" parent="." index="36" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4 )
+
+[node name="PartPillar25" parent="." index="37" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4 )
+
+[node name="PartPillar26" parent="." index="38" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -4 )
+
+[node name="PartRoofConnector" parent="." index="39" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8 )
+
+[node name="PartRoofConnector4" parent="." index="40" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4 )
+
+[node name="PartRoofConnector6" parent="." index="41" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="PartRoofConnector8" parent="." index="42" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
+
+[node name="PartRoofConnector9" parent="." index="43" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
+
+[node name="PartRoofConnector10" parent="." index="44" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0 )
+
+[node name="PartRoofConnector14" parent="." index="45" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0 )
+
+[node name="PartRoofConnector11" parent="." index="46" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0 )
+
+[node name="PartRoofConnector12" parent="." index="47" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -4 )
+
+[node name="PartRoofConnector13" parent="." index="48" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -8 )
+
+[node name="PartRoofConnector5" parent="." index="49" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20 )
+
+[node name="PartRoofConnector7" parent="." index="50" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24 )
+
+[node name="PartRoofConnector3" parent="." index="51" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12 )
+
+[node name="PartRoofConnector2" parent="." index="52" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16 )
+
+[node name="PartBuildingSide1" parent="." index="53" instance=ExtResource( 5 )]
+
+transform = Transform( 1, 0, 1.06581e-014, 0, 1, 0, -1.06581e-014, 0, 1, 2, 0, 2 )
+
+[node name="PartBuildingSide2" parent="." index="54" instance=ExtResource( 5 )]
+
+transform = Transform( 1.31134e-007, 0, -1, 0, 1, 0, 1, 0, 1.31134e-007, -2, 0, -2 )
+
+[node name="PartBuildingSide3" parent="." index="55" instance=ExtResource( 5 )]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 2, 0, -22 )
+
+[node name="PartBuildingSide4" parent="." index="56" instance=ExtResource( 5 )]
+
+transform = Transform( 1.31134e-007, 0, -1, 0, 1, 0, 1, 0, 1.31134e-007, -2, 0, -22 )
+
+[node name="PartBuildingSide5" parent="." index="57" instance=ExtResource( 5 )]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 2, 0, -18 )
+
+[node name="PartBuildingSide7" parent="." index="58" instance=ExtResource( 5 )]
+
+transform = Transform( 1.31134e-007, 0, -1, 0, 1, 0, 1, 0, 1.31134e-007, -2, 0, -6 )
+
+[node name="PartBuildingSide8" parent="." index="59" instance=ExtResource( 5 )]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 2, 0, -6 )
+
+[node name="PartBuildingSide9" parent="." index="60" instance=ExtResource( 5 )]
+
+transform = Transform( 1.31134e-007, 0, -1, 0, 1, 0, 1, 0, 1.31134e-007, -2, 0, -10 )
+
+[node name="PartBuildingSide11" parent="." index="61" instance=ExtResource( 5 )]
+
+transform = Transform( 1.31134e-007, 0, -1, 0, 1, 0, 1, 0, 1.31134e-007, -2, 0, -14 )
+
+[node name="PartBuildingSide12" parent="." index="62" instance=ExtResource( 5 )]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 2, 0, -14 )
+
+[node name="PartBuildingSide14" parent="." index="63" instance=ExtResource( 5 )]
+
+transform = Transform( 1, 0, 1.06581e-014, 0, 1, 0, -1.06581e-014, 0, 1, 10, 0, 2 )
+
+[node name="PartBuildingSide15" parent="." index="64" instance=ExtResource( 5 )]
+
+transform = Transform( 1, 0, 1.06581e-014, 0, 1, 0, -1.06581e-014, 0, 1, 14, 0, 2 )
+
+[node name="PartBuildingSide16" parent="." index="65" instance=ExtResource( 5 )]
+
+transform = Transform( 1, 0, 1.06581e-014, 0, 1, 0, -1.06581e-014, 0, 1, 18, 0, 2 )
+
+[node name="PartBuildingSide18" parent="." index="66" instance=ExtResource( 5 )]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 22, 0, -6 )
+
+[node name="PartBuildingSide19" parent="." index="67" instance=ExtResource( 5 )]
+
+transform = Transform( 1.31134e-007, 0, -1, 0, 1, 0, 1, 0, 1.31134e-007, 18, 0, -6 )
+
+[node name="PartBuildingSide21" parent="." index="68" instance=ExtResource( 5 )]
+
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 10, 0, -2 )
+
+[node name="PartBuildingSide23" parent="." index="69" instance=ExtResource( 5 )]
+
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 14, 0, -2 )
+
+[node name="PartBuildingSide22" parent="." index="70" instance=ExtResource( 5 )]
+
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 6, 0, -2 )
+
+[node name="PartBuildingSideReinforced" parent="." index="71" instance=ExtResource( 6 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2 )
+
+[node name="PartBuildingSideReinforced2" parent="." index="72" instance=ExtResource( 6 )]
+
+transform = Transform( -2.98023e-008, 0, 1, 0, 1, 0, -1, 0, -2.98023e-008, 22, 0, -2 )
+
+[node name="PartBuildingSideReinforced3" parent="." index="73" instance=ExtResource( 6 )]
+
+transform = Transform( -2.98023e-008, 0, 1, 0, 1, 0, -1, 0, -2.98023e-008, 2, 0, -10 )
+
+[node name="PartBuildingSideReinforced4" parent="." index="74" instance=ExtResource( 6 )]
+
+transform = Transform( 1.17225e-007, 0, -1, 0, 1, 0, 1, 0, 1.17225e-007, -2, 0, -18 )
+
+[node name="PartRoofBeam" parent="." index="75" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartRoofBeam2" parent="." index="76" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartRoofBeam3" parent="." index="77" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartRoofBeam4" parent="." index="78" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartRoofBeam5" parent="." index="79" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartRoofBeam6" parent="." index="80" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartRoofBeam7" parent="." index="81" instance=ExtResource( 7 )]
+
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 2, 0, 0 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartRoofBeam8" parent="." index="82" instance=ExtResource( 7 )]
+
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 6, 0, 0 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartRoofBeam9" parent="." index="83" instance=ExtResource( 7 )]
+
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 10, 0, 0 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartRoofBeam14" parent="." index="84" instance=ExtResource( 7 )]
+
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 14, 0, 0 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartRoofBeam10" parent="." index="85" instance=ExtResource( 7 )]
+
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 18, 0, 0 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartRoofBeam11" parent="." index="86" instance=ExtResource( 7 )]
+
+transform = Transform( -1, 0, 8.74228e-008, 0, 1, 0, -8.74228e-008, 0, -1, 20, 0, -2 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartRoofBeam12" parent="." index="87" instance=ExtResource( 7 )]
+
+transform = Transform( -1, 0, 8.74228e-008, 0, 1, 0, -8.74228e-008, 0, -1, 20, 0, -6 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartRoofBeam13" parent="." index="88" instance=ExtResource( 7 )]
+
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 18, 0, -4 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartRoof" parent="." index="89" instance=ExtResource( 8 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2 )
+
+[node name="PartRoof2" parent="." index="90" instance=ExtResource( 8 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -2 )
+
+

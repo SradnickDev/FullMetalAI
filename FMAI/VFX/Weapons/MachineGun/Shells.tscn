@@ -1,0 +1,161 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://VFX/Utilities/EffectPlayer.gd" type="Script" id=1]
+
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "Play"
+length = 1.0
+loop = true
+step = 0.1
+
+[sub_resource type="SpatialMaterial" id=2]
+
+render_priority = 0
+flags_transparent = true
+flags_unshaded = true
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 0.207031, 0.207031, 0.207031, 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Albedo", "Flags" ]
+
+[sub_resource type="ParticlesMaterial" id=3]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 20.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 35.3
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = -1.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 0.1
+scale_random = 0.0
+color = Color( 1, 1, 1, 1 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Flags", "Gravity", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Radial Accel", "Scale", "Spread", "Tangential Accel" ]
+
+[sub_resource type="CapsuleMesh" id=4]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+radius = 1.0
+mid_height = 1.0
+radial_segments = 64
+rings = 8
+
+[node name="Shells" type="Spatial" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+useAnimationPlayer = true
+animationName = "Play"
+oneShot = true
+destroyOnFinished = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Play = SubResource( 1 )
+blend_times = [  ]
+
+[node name="Capsules" type="Particles" parent="." index="1"]
+
+transform = Transform( -4.37114e-008, 4.37114e-008, 1, 1, -4.37114e-008, 4.37114e-008, 4.37114e-008, 1, -4.37114e-008, -0.348059, 0, -0.190603 )
+layers = 1
+material_override = SubResource( 2 )
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+emitting = true
+amount = 3
+lifetime = 0.4
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_aabb = AABB( -4, -4, -4.89913, 8, 8, 9.79826 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 3 )
+draw_passes = 1
+draw_pass_1 = SubResource( 4 )
+_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Process Material", "Time", "Transform", "Visibility" ]
+
+

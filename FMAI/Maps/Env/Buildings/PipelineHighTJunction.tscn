@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Maps/Env/Decoration/Pipes/PipeTJunction.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/Env/Decoration/Pipes/Pipe4m.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Maps/Env/Decoration/Pipes/PipeFlow.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Maps/Env/Decoration/Pipes/PipePillarBig.tscn" type="PackedScene" id=4]
+
+[node name="PipelineHighTJunction" type="Spatial"]
+
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="PipeTJunction" parent="." index="0" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 3 )
+
+[node name="Pipe4m" parent="." index="1" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0 )
+
+[node name="PipeFlow" parent="." index="2" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 5 )
+
+[node name="PipePillarBig" parent="." index="3" instance=ExtResource( 4 )]
+
+

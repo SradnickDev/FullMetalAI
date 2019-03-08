@@ -1,0 +1,90 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Menu/LeaderBoard/LeaderBoardQuery.gd" type="Script" id=1]
+[ext_resource path="res://Menu/Graphics/theme/MasterTheme.tres" type="Theme" id=2]
+[ext_resource path="res://Menu/LeaderBoard/SubmittedName.gd" type="Script" id=3]
+
+[node name="LeaderBoardQuery" type="Control" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 765.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 765, 88 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Rect", "Theme", "custom_constants" ]
+closeFocus = null
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." index="0"]
+
+download_file = ""
+use_threads = true
+body_size_limit = -1
+max_redirects = 8
+
+[node name="SubmittedName" type="LineEdit" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 370.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+max_length = 10
+focus_mode = 2
+context_menu_enabled = true
+placeholder_text = "enter name.."
+placeholder_alpha = 0.6
+caret_blink = true
+caret_blink_speed = 0.65
+caret_position = 0
+script = ExtResource( 3 )
+_sections_unfolded = [ "Anchor", "Margin", "Placeholder", "Rect", "Size Flags", "Theme" ]
+
+[node name="Submit" type="Button" parent="." index="2"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -310.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 310, 88 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 2 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Submit"
+flat = false
+align = 0
+_sections_unfolded = [ "Margin", "Rect", "Theme" ]
+
+[connection signal="request_completed" from="HTTPRequest" to="." method="onHTTPRequestCompleted"]
+
+[connection signal="pressed" from="Submit" to="." method="onSubmitButtonPressed"]
+
+

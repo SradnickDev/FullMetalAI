@@ -1,0 +1,13 @@
+{
+"Accuracy": 31.82,
+"Damage": 0,
+"Damage Taken": 490.0,
+"Enemies Killed": 12,
+"Enemies Spawned": 40,
+"Fired": 154,
+"Hitted": 49,
+"Life Time": 51.5384,
+"Meters Driven": 363.177,
+"Missed": 105,
+"Waves Survived": 1
+}

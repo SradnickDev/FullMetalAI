@@ -1,0 +1,123 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Maps/Env/Decoration/BuildingDecoration/BuildingGate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/Env/BuildingParts/PartBuildingTriangle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Maps/Env/BuildingParts/PartWall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Maps/Env/BuildingParts/PartCorner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Maps/Env/BuildingParts/PartPillar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Maps/Env/BuildingParts/PartRoofBeam.tscn" type="PackedScene" id=6]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 7.00118, 1, 0.464638 )
+
+[sub_resource type="BoxShape" id=2]
+
+extents = Vector3( 3.61955, 1, 0.506567 )
+
+[sub_resource type="BoxShape" id=3]
+
+extents = Vector3( 2.46173, 1, 0.65062 )
+
+[node name="BuildingTrapez" type="StaticBody" index="0"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 8
+collision_mask = 0
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="BuildingGate" parent="." index="0" instance=ExtResource( 1 )]
+
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -2.12132, 0, 2.12132 )
+
+[node name="PartBuildingCornerUp" parent="." index="1" instance=ExtResource( 2 )]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -2, 0, 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="PartBuildingCornerUp3" parent="." index="2" instance=ExtResource( 2 )]
+
+transform = Transform( 1.31134e-007, 0, -1, 0, 1, 0, 1, 0, 1.31134e-007, -2, 0, -2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="PartBuildingCornerUp2" parent="." index="3" instance=ExtResource( 2 )]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 2, 0, -2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="PartWall" parent="." index="4" instance=ExtResource( 3 )]
+
+transform = Transform( 1.31134e-007, 0, -1, 0, 1, 0, 1, 0, 1.31134e-007, -4, 0, 2 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartWall2" parent="." index="5" instance=ExtResource( 3 )]
+
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 2, 0, -4 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartCorner" parent="." index="6" instance=ExtResource( 4 )]
+
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -4, 0, 4 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartCorner3" parent="." index="7" instance=ExtResource( 4 )]
+
+transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, -4.25, 0, 0 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartCorner4" parent="." index="8" instance=ExtResource( 4 )]
+
+transform = Transform( -1, 0, 4.37114e-008, 0, 1, 0, -4.37114e-008, 0, -1, 0, 0, -4.25 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartCorner2" parent="." index="9" instance=ExtResource( 4 )]
+
+transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 4.25, 0, -4.25 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartPillar" parent="." index="10" instance=ExtResource( 5 )]
+
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0 )
+
+[node name="PartRoofBeam" parent="." index="11" instance=ExtResource( 6 )]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -2.25, 0, 0 )
+
+[node name="PartRoofBeam2" parent="." index="12" instance=ExtResource( 6 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="13"]
+
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.107662, 1, -0.107662 )
+shape = SubResource( 1 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2" type="CollisionShape" parent="." index="14"]
+
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -2.38178, 1, -2.38178 )
+shape = SubResource( 2 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape3" type="CollisionShape" parent="." index="15"]
+
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 2.3262, 1, -4.67348 )
+shape = SubResource( 3 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape4" type="CollisionShape" parent="." index="16"]
+
+transform = Transform( -0.0256853, 0, 0.99967, 0, 1, 0, -0.99967, 0, -0.0256853, -4.61125, 1, 2.13947 )
+shape = SubResource( 3 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+

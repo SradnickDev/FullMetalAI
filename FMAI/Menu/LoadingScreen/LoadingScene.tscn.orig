@@ -1,0 +1,166 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Menu/Graphics/theme/defaultTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Menu/LoadingScreen/LoadingScreenBackground.png" type="Texture" id=2]
+[ext_resource path="res://Menu/LoadingScreen/LoadingScene.gd" type="Script" id=3]
+[ext_resource path="res://Menu/GlitchEffect/Glitch.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Menu/Graphics/theme/font/FontDerelictRegularBig.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Menu/LoadingScreen/LoadingIcon.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "FadeOut"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+
+length = 3.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Loadingicon:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Loading:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "    Loading", "    Loading_", "    Loading", "    Loading_", "    Loading", "    Loading_" ]
+}
+
+[node name="LoadingScene" type="TextureRect"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 0
+script = ExtResource( 3 )
+_sections_unfolded = [ "Visibility" ]
+tips = [ "Gastanks create massive explosions if blown up.", "Laserwalls create a dangerous lasergrid.", "EMP Towers genereate a massive stun field if charged with the EMP Blaster", "Some Laserwalls can be (de)activated by overloading their generator.", "Have Fun.", "EMP Blaster destroys enemy shields." ]
+
+[node name="Glitch" parent="." index="0" instance=ExtResource( 4 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+
+root_node = NodePath("..")
+autoplay = "Loading"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/FadeOut = SubResource( 1 )
+anims/Loading = SubResource( 2 )
+blend_times = [  ]
+
+[node name="Tips" type="Label" parent="." index="2"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -950.0
+margin_top = 184.0
+margin_right = 950.0
+margin_bottom = 227.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 4
+size_flags_vertical = 5
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Placeholder text"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_colors", "custom_fonts" ]
+
+[node name="Loading" type="Label" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_top = -85.0
+margin_right = 186.0
+margin_bottom = -35.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 4
+size_flags_vertical = 5
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "    Loading"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_colors", "custom_fonts" ]
+
+[node name="Loadingicon" type="TextureRect" parent="." index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 880.0
+margin_top = 890.0
+margin_right = 1045.0
+margin_bottom = 1034.0
+rect_pivot_offset = Vector2( 83, 83 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 6 )
+stretch_mode = 4
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="onAnimationPlayerAnimationFinished"]
+
+

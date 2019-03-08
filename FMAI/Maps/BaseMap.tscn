@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Maps/Navigation.gd" type="Script" id=1]
+[ext_resource path="res://Maps/DefaultNavMeshSettings.tres" type="NavigationMesh" id=2]
+[ext_resource path="res://Materials/MaterialGround.tres" type="Material" id=3]
+[ext_resource path="res://Maps/Env/Buildings/SignalTower.tscn" type="PackedScene" id=4]
+
+[sub_resource type="PlaneMesh" id=1]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+size = Vector2( 2, 2 )
+subdivide_width = 0
+subdivide_depth = 0
+
+[node name="DefaultMap" type="Navigation"]
+
+up_vector = Vector3( 0, 1, 0 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+threadCount = 3
+maxThreadCount = 10
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="." index="0"]
+
+navmesh = ExtResource( 2 )
+enabled = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="Ground" type="MeshInstance" parent="NavigationMeshInstance" index="0"]
+
+transform = Transform( 250, 0, 0, 0, 1, 0, 0, 0, 250, 0, 0, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 3 )
+_sections_unfolded = [ "Geometry", "Transform", "material" ]
+
+[node name="SignalTower" parent="NavigationMeshInstance" index="1" instance=ExtResource( 4 )]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="." index="1"]
+
+transform = Transform( 0.708474, -0.573613, 0.411138, 0.180822, 0.710658, 0.679905, -0.682179, -0.407352, 0.607204, 3.92321, 20.1203, 1.11095 )
+layers = 1
+light_color = Color( 1, 0.981079, 0.960938, 1 )
+light_energy = 1.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = true
+shadow_color = Color( 0, 0.462769, 0.871094, 1 )
+shadow_bias = 0.1
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+directional_shadow_mode = 2
+directional_shadow_split_1 = 0.1
+directional_shadow_split_2 = 0.2
+directional_shadow_split_3 = 0.5
+directional_shadow_blend_splits = false
+directional_shadow_normal_bias = 0.8
+directional_shadow_bias_split_scale = 0.25
+directional_shadow_depth_range = 0
+directional_shadow_max_distance = 200.0
+_sections_unfolded = [ "Light", "Shadow" ]
+
+[node name="Rimlight" type="DirectionalLight" parent="." index="2"]
+
+transform = Transform( 0.324697, 0.819733, -0.471818, 0.791323, -0.508679, -0.339197, -0.518054, -0.263224, -0.81384, 2.48706, 20.0005, -3.22912 )
+layers = 1
+light_color = Color( 0, 0.130371, 0.1875, 1 )
+light_energy = 0.44
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0.664063, 0.664063, 0.664063, 1 )
+shadow_bias = 0.1
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+directional_shadow_mode = 2
+directional_shadow_split_1 = 0.1
+directional_shadow_split_2 = 0.2
+directional_shadow_split_3 = 0.5
+directional_shadow_blend_splits = false
+directional_shadow_normal_bias = 0.8
+directional_shadow_bias_split_scale = 0.25
+directional_shadow_depth_range = 0
+directional_shadow_max_distance = 200.0
+_sections_unfolded = [ "Light" ]
+
+

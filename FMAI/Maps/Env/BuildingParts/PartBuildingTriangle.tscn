@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Maps/Env/BuildingParts/PartWallDiagonal.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/Env/BuildingParts/PartRoofTriangle.tscn" type="PackedScene" id=2]
+
+[node name="PartBuildingCornerUp" type="Spatial"]
+
+[node name="PartWallDiagonal" parent="." index="0" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="PartRoofTriangle" parent="." index="1" instance=ExtResource( 2 )]
+
+

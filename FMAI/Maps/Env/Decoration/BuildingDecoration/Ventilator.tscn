@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Maps/Env/Decoration/BuildingDecoration/Models/VentilatorCase.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Materials/Decoration/BuildingDecoration01.tres" type="Material" id=2]
+[ext_resource path="res://Maps/Env/Decoration/BuildingDecoration/Models/VentilatorFan.obj" type="ArrayMesh" id=3]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "FanRotation"
+length = 4.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("VentilatorCase/VentilatorFan:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
+
+[node name="Ventilator" type="Spatial"]
+
+[node name="VentilatorCase" type="MeshInstance" parent="." index="0"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 1 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 2 )
+_sections_unfolded = [ "material" ]
+
+[node name="VentilatorFan" type="MeshInstance" parent="VentilatorCase" index="0"]
+
+transform = Transform( 0.947771, 0, -0.318951, 0, 1, 0, 0.318951, 0, 0.947771, 0, 0, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 3 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 2 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="FanRotation" type="AnimationPlayer" parent="." index="1"]
+
+root_node = NodePath("..")
+autoplay = "FanRotation"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/FanRotation = SubResource( 1 )
+blend_times = [  ]
+
+

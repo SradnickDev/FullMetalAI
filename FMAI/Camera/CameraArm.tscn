@@ -1,0 +1,141 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Camera/CameraMovement.gd" type="Script" id=1]
+[ext_resource path="res://CameraEnv.tres" type="Environment" id=2]
+[ext_resource path="res://Camera/Camera.gd" type="Script" id=3]
+[ext_resource path="res://Camera/CameraShake.gd" type="Script" id=4]
+[ext_resource path="res://Gamepad/JoyShake.gd" type="Script" id=5]
+[ext_resource path="res://Camera/Shake.gd" type="Script" id=6]
+[ext_resource path="res://Camera/MousePosition.gd" type="Script" id=7]
+
+
+[node name="CameraArm" type="Spatial" index="0"]
+
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 0, 0 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+targetOffset = Vector3( 0, 15, 10 )
+additionalOffset = Vector3( 0, 5, 3 )
+angle = Vector3( 30, 0, 0 )
+positionDampTime = 5
+zoomDampTime = 5
+targetPath = NodePath("../Player")
+
+[node name="Camera" type="Camera" parent="." index="0"]
+
+transform = Transform( 1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = ExtResource( 2 )
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = true
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 100.0
+script = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CameraShake" type="Node" parent="Camera" index="0"]
+
+script = ExtResource( 4 )
+
+[node name="JoyShake" type="Node" parent="Camera/CameraShake" index="0"]
+
+script = ExtResource( 5 )
+
+[node name="Shakes" type="Node" parent="Camera/CameraShake" index="1"]
+
+editor/display_folded = true
+
+[node name="DefaultShotCameraShake" type="Node" parent="Camera/CameraShake/Shakes" index="0"]
+
+script = ExtResource( 6 )
+duration = 0.1
+amplitude = Vector2( 0.2, 0.2 )
+frequency = 30.0
+priority = 1.0
+
+[node name="OverlockShotCameraShake" type="Node" parent="Camera/CameraShake/Shakes" index="1"]
+
+script = ExtResource( 6 )
+duration = 0.1
+amplitude = Vector2( 0.6, 0.6 )
+frequency = 50.0
+priority = 2.0
+
+[node name="StunCameraShake" type="Node" parent="Camera/CameraShake/Shakes" index="2"]
+
+script = ExtResource( 6 )
+duration = 0.5
+amplitude = Vector2( 1, 0 )
+frequency = 80.0
+priority = 10.0
+
+[node name="SmallExplosionCameraShake" type="Node" parent="Camera/CameraShake/Shakes" index="3"]
+
+script = ExtResource( 6 )
+duration = 0.5
+amplitude = Vector2( 0.4, 0.4 )
+frequency = 35.0
+priority = 2.0
+
+[node name="BiglExplosionCameraShake" type="Node" parent="Camera/CameraShake/Shakes" index="4"]
+
+script = ExtResource( 6 )
+duration = 0.75
+amplitude = Vector2( 0.6, 0.6 )
+frequency = 35.0
+priority = 3.0
+
+[node name="TowerStunCameraShake" type="Node" parent="Camera/CameraShake/Shakes" index="5"]
+
+script = ExtResource( 6 )
+duration = 1.0
+amplitude = Vector2( 1, 1 )
+frequency = 20.0
+priority = 10.0
+
+[node name="PowerUpCameraShake" type="Node" parent="Camera/CameraShake/Shakes" index="6"]
+
+script = ExtResource( 6 )
+duration = 0.1
+amplitude = Vector2( 0.2, 0.2 )
+frequency = 30.0
+priority = 0.0
+
+[node name="Frequency" type="Timer" parent="Camera/CameraShake" index="2"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="Duration" type="Timer" parent="Camera/CameraShake" index="3"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="ShakeTween" type="Tween" parent="Camera/CameraShake" index="4"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="MousePosition" type="Node" parent="Camera" index="1"]
+
+script = ExtResource( 7 )
+
+[connection signal="timeout" from="Camera/CameraShake/Frequency" to="Camera/CameraShake" method="onFrequencyTimeout"]
+
+[connection signal="timeout" from="Camera/CameraShake/Duration" to="Camera/CameraShake" method="onDurationTimeout"]
+
+

@@ -1,0 +1,165 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Maps/Env/BuildingParts/PartRoofBeam.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/Env/BuildingParts/PartBuildingMiddleReinforced.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Maps/Env/BuildingParts/PartBuildingMiddle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Maps/Env/BuildingParts/PartBuildingEnd.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Maps/Env/BuildingParts/PartBuildingCorner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Maps/Env/BuildingParts/PartPillar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Maps/Env/BuildingParts/PartCorner.tscn" type="PackedScene" id=7]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 16.9624, 1, 3.23908 )
+
+[sub_resource type="BoxShape" id=2]
+
+extents = Vector3( 4.90936, 1, 2.94892 )
+
+[node name="LaserCorridorLeft" type="StaticBody" index="0"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 8
+collision_mask = 0
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="PartRoofBeam" parent="." index="0" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="PartRoofBeam3" parent="." index="1" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2 )
+
+[node name="PartRoofBeam6" parent="." index="2" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 2 )
+
+[node name="PartRoofBeam2" parent="." index="3" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2 )
+
+[node name="PartRoofBeam4" parent="." index="4" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 2 )
+
+[node name="PartRoofBeam5" parent="." index="5" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 2 )
+
+[node name="PartRoofBeam7" parent="." index="6" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 2 )
+
+[node name="PartBuildingMiddleReinforced" parent="." index="7" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 2 )
+
+[node name="PartBuildingMiddle" parent="." index="8" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2 )
+
+[node name="PartBuildingMiddle2" parent="." index="9" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2 )
+
+[node name="PartBuildingMiddle4" parent="." index="10" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2 )
+
+[node name="PartBuildingMiddle5" parent="." index="11" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 2 )
+
+[node name="PartBuildingMiddle6" parent="." index="12" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 2 )
+
+[node name="PartBuildingEnd" parent="." index="13" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 2 )
+
+[node name="PartBuildingEnd2" parent="." index="14" instance=ExtResource( 4 )]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -2, 0, -2 )
+
+[node name="PartBuildingCorner" parent="." index="15" instance=ExtResource( 5 )]
+
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -2, 0, 2 )
+
+[node name="PartPillar" parent="." index="16" instance=ExtResource( 6 )]
+
+[node name="PartPillar9" parent="." index="17" instance=ExtResource( 6 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0 )
+
+[node name="PartPillar2" parent="." index="18" instance=ExtResource( 6 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="PartPillar6" parent="." index="19" instance=ExtResource( 6 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 4 )
+
+[node name="PartPillar4" parent="." index="20" instance=ExtResource( 6 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4 )
+
+[node name="PartPillar7" parent="." index="21" instance=ExtResource( 6 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 4 )
+
+[node name="PartPillar3" parent="." index="22" instance=ExtResource( 6 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4 )
+
+[node name="PartPillar8" parent="." index="23" instance=ExtResource( 6 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 4 )
+
+[node name="PartPillar5" parent="." index="24" instance=ExtResource( 6 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 4 )
+
+[node name="PartCorner" parent="." index="25" instance=ExtResource( 7 )]
+
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 4, 0, -0.5 )
+
+[node name="PartCorner3" parent="." index="26" instance=ExtResource( 7 )]
+
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 12, 0, -0.5 )
+
+[node name="PartCorner6" parent="." index="27" instance=ExtResource( 7 )]
+
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 20, 0, -0.5 )
+
+[node name="PartCorner2" parent="." index="28" instance=ExtResource( 7 )]
+
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 8, 0, -0.5 )
+
+[node name="PartCorner4" parent="." index="29" instance=ExtResource( 7 )]
+
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 16, 0, -0.5 )
+
+[node name="PartCorner5" parent="." index="30" instance=ExtResource( 7 )]
+
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 24, 0, -0.5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="31"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 1.6262 )
+shape = SubResource( 1 )
+disabled = false
+
+[node name="CollisionShape16" type="CollisionShape" parent="." index="32"]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -2, 1, 0 )
+shape = SubResource( 2 )
+disabled = false
+
+

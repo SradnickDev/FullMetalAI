@@ -1,0 +1,116 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://WaveSystem/WaveSystem.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Camera/CameraArm.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Audio/Background/LevelAmbient.ogg" type="AudioStream" id=4]
+[ext_resource path="res://VFX/Environment/SandStorm.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Debug/ShaderCache.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Menu/ScoreDisplay/ScoreDisplay.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Menu/PauseMenu/PauseMenu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Menu/DeathMenu/DeathMenu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Debug/InputDeviceInfo.tscn" type="PackedScene" id=10]
+
+[sub_resource type="Curve3D" id=1]
+
+bake_interval = 0.2
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -99.1043, 0.681282, -10.1965, 0, 0, 0, 0, 0, 0, -99.6547, 0.152256, 0.314936, 0, 0, 0, 0, 0, 0, -101.149, 0.362363, 11.2301, 0, 0, 0, 0, 0, 0, -100.74, 0.264507, 51.0966, 0, 0, 0, 0, 0, 0, -90.0584, 0.476671, 69.5276, 0, 0, 0, 0, 0, 0, -69.8373, 0.407362, 91.3576, 0, 0, 0, 0, 0, 0, -50.4087, 0.586527, 100.249, 0, 0, 0, 0, 0, 0, -9.15239, 0.549409, 99.6163, 0, 0, 0, 0, 0, 0, 0.975238, 0.156937, 99.8781, 0, 0, 0, 0, 0, 0, 11.0662, 0.509521, 100.216, 0, 0, 0, 0, 0, 0, 50.7195, 1.89243, 99.055, 0, 0, 0, 0, 0, 0, 69.4254, 1.96259, 88.6949, 0, 0, 0, 0, 0, 0, 88.4792, 2.03307, 69.2379, 0, 0, 0, 0, 0, 0, 99.4553, 2.07271, 49.5425, 0, 0, 0, 0, 0, 0, 100.229, 2.07123, 10.2964, 0, 0, 0, 0, 0, 0, 99.1854, 1.51875, -0.24181, 0, 0, 0, 0, 0, 0, 99.6996, 2.06682, -10.8937, 0, 0, 0, 0, 0, 0, 99.3079, 2.06094, -49.7892, 0, 0, 0, 0, 0, 0, 89.0828, 2.01985, -68.5706, 0, 0, 0, 0, 0, 0, 69.3095, 1.94205, -89.9438, 0, 0, 0, 0, 0, 0, 49.5688, 1.86571, -99.3814, 0, 0, 0, 0, 0, 0, 12.6081, 1.72478, -99.3176, 0, 0, 0, 0, 0, 0, 1.06857, 1.68074, -99.6583, 0, 0, 0, 0, 0, 0, -9.31701, 1.64111, -99.9649, 0, 0, 0, 0, 0, 0, -49.7622, 1.48698, -99.234, 0, 0, 0, 0, 0, 0, -69.2673, 1.41359, -90.57, 0, 0, 0, 0, 0, 0, -88.7171, 1.34166, -70.7398, 0, 0, 0, 0, 0, 0, -97.7122, 2.88143, -51.616, 0, 0, 0, 0, 0, 0, -99.1043, 0.681282, -10.1965 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[node name="BaseGameScene" type="Node"]
+
+_sections_unfolded = [ "Pause", "Transform", "Visibility" ]
+
+[node name="World" type="Spatial" parent="." index="0"]
+
+[node name="WaveSystem" parent="World" index="0" instance=ExtResource( 1 )]
+
+_sections_unfolded = [ "Transform" ]
+playerPath = NodePath("../Player")
+
+[node name="Path" type="Path" parent="World/WaveSystem" index="4"]
+
+curve = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="PathFollow" type="PathFollow" parent="World/WaveSystem/Path" index="0"]
+
+transform = Transform( -0.602673, -0.0271846, 0.797525, -0.0812613, 0.996315, -0.0274469, -0.79384, -0.0813494, -0.602661, -99.1043, 0.681282, -10.1965 )
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotation_mode = 3
+cubic_interp = true
+loop = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="CameraArm" parent="World" index="1" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 15, 8 )
+zoomDampTime = 1.0
+
+[node name="Player" parent="World" index="2" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.196375, 0, 4.17342 )
+collision/safe_margin = 0.05
+speed = 25.0
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." index="1"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Music"
+
+[node name="SandStorm" parent="." index="2" instance=ExtResource( 5 )]
+
+[node name="ShaderCache" parent="." index="3" instance=ExtResource( 6 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -41.6691, 0 )
+
+[node name="Menu" type="Node" parent="." index="4"]
+
+_sections_unfolded = [ "Pause" ]
+
+[node name="ScoreDisplay" parent="Menu" index="0" instance=ExtResource( 7 )]
+
+_sections_unfolded = [ "Pause" ]
+
+[node name="PauseMenu" parent="Menu" index="1" instance=ExtResource( 8 )]
+
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
+
+[node name="DeathMenu" parent="Menu" index="2" instance=ExtResource( 9 )]
+
+visible = false
+
+[node name="InputDeviceInfo" parent="Menu" index="3" instance=ExtResource( 10 )]
+
+anchor_left = 1.0
+anchor_top = 1.0
+margin_left = -274.0
+margin_top = -280.0
+margin_right = -24.0
+margin_bottom = 0.0
+
+[connection signal="death" from="World/Player" to="World/WaveSystem" method="stop"]
+
+[connection signal="playerDied" from="World/Player" to="Menu/DeathMenu" method="openMenu"]
+
+[connection signal="startedMoving" from="World/Player" to="World/CameraArm" method="onPlayerStartedMoving"]
+
+[connection signal="stoppedMoving" from="World/Player" to="World/CameraArm" method="onPlayerStoppedMoving"]
+
+

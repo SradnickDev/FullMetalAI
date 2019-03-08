@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Menu/Graphics/theme/defaultTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Menu/Graphics/Background/BackgroundPlaceholder.png" type="Texture" id=2]
+[ext_resource path="res://Menu/GlitchEffect/Logo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Menu/GlitchEffect/Glitch.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Menu/Graphics/theme/font/FontDerelictRoughBig.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Menu/Options/OptionsContent.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Menu/Buttons/BackToMenuButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Debug/InputDeviceInfo.tscn" type="PackedScene" id=8]
+
+[node name="Options" type="TextureRect" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 400, 550 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Pause", "Rect", "Size Flags" ]
+
+[node name="Logo" parent="." index="0" instance=ExtResource( 3 )]
+
+[node name="Glitch" parent="." index="1" instance=ExtResource( 4 )]
+
+[node name="Header" type="Label" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 306.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 5 )
+text = "Options"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "Theme" ]
+
+[node name="OptionsContent" parent="." index="3" instance=ExtResource( 6 )]
+
+editor/display_folded = true
+margin_left = 50.0
+margin_top = -140.0
+margin_right = 455.0
+margin_bottom = 231.0
+
+[node name="Settings" parent="OptionsContent" index="0"]
+
+editor/display_folded = false
+
+[node name="VSyncToggle" parent="OptionsContent/Settings" index="0"]
+
+focus_neighbour_top = NodePath("../../../BackToMenuButton")
+
+[node name="AudioToggle" parent="OptionsContent/Audio" index="0"]
+
+focus_neighbour_bottom = NodePath("../EffectSlider/Slider")
+
+[node name="Slider" parent="OptionsContent/Audio/EffectSlider" index="2"]
+
+focus_neighbour_bottom = NodePath("../../../../BackToMenuButton")
+
+[node name="BackToMenuButton" parent="." index="4" instance=ExtResource( 7 )]
+
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = -130.0
+margin_right = 374.0
+margin_bottom = -40.0
+focus_neighbour_top = NodePath("../OptionsContent/Audio/EffectSlider/Slider")
+focus_neighbour_bottom = NodePath("../OptionsContent/Settings/VSyncToggle")
+size_flags_horizontal = 4
+align = 0
+_sections_unfolded = [ "Focus", "Rect", "Size Flags", "Textures", "Theme" ]
+
+[node name="InputDeviceInfo" parent="." index="5" instance=ExtResource( 8 )]
+
+anchor_left = 1.0
+anchor_top = 1.0
+margin_left = -274.0
+margin_top = -280.0
+margin_right = -24.0
+margin_bottom = 0.0
+
+
+[editable path="OptionsContent"]
+[editable path="OptionsContent/Audio/EffectSlider"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Maps/Env/BuildingParts/PartCorner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/Env/BuildingParts/PartWall.tscn" type="PackedScene" id=2]
+
+[node name="PartFencePart" type="Spatial" index="0"]
+
+[node name="PartCorner" parent="." index="0" instance=ExtResource( 1 )]
+
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 2, 0, -0.135 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartCorner2" parent="." index="1" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 1.74846e-007, 0, 1, 0, -1.74846e-007, 0, 1, 2.001, 0.001, 0.1351 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartWall" parent="." index="2" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.135 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartWall2" parent="." index="3" instance=ExtResource( 2 )]
+
+transform = Transform( -1, 0, -1.50996e-007, 0, 1, 0, 1.50996e-007, 0, -1, 0, 0, -0.135 )
+_sections_unfolded = [ "Transform", "material" ]
+
+

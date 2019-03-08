@@ -1,0 +1,521 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Menu/Graphics/theme/defaultTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Menu/Graphics/Background/BackgroundPlaceholder.png" type="Texture" id=2]
+[ext_resource path="res://Menu/MapSelect/MapSelect.gd" type="Script" id=3]
+[ext_resource path="res://Menu/LoadingScreen/LoadingScene.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Menu/Graphics/MapSelection/Map.png" type="Texture" id=5]
+[ext_resource path="res://Menu/MapSelect/MapLoadButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Menu/Graphics/Background/MapPreviewCrossroads.png" type="Texture" id=7]
+[ext_resource path="res://Menu/Graphics/Background/MapPreviewFortress.png" type="Texture" id=8]
+[ext_resource path="res://Menu/Graphics/Background/MapPreviewDigIn.png" type="Texture" id=9]
+[ext_resource path="res://Menu/Graphics/Background/MapPreviewDesolation.png" type="Texture" id=10]
+[ext_resource path="res://Menu/Graphics/Background/MapPreviewFactory.png" type="Texture" id=11]
+[ext_resource path="res://Menu/Graphics/Background/MapPreviewLandingZone.png" type="Texture" id=12]
+[ext_resource path="res://Menu/Graphics/Background/MapPreviewSolarFarm.png" type="Texture" id=13]
+[ext_resource path="res://Menu/Graphics/Background/MapPreviewHotStuff.png" type="Texture" id=14]
+[ext_resource path="res://Menu/Graphics/Background/MapPreviewTheRealCircle.png" type="Texture" id=15]
+[ext_resource path="res://Menu/GlitchEffect/GlitchSlight.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Menu/Graphics/theme/font/FontDerelictRoughBig.tres" type="DynamicFont" id=17]
+[ext_resource path="res://Menu/Buttons/BackToMenuButton.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Menu/Graphics/theme/MasterTheme.tres" type="Theme" id=19]
+[ext_resource path="res://Menu/Graphics/Button/ButtonPressedGreen.png" type="Texture" id=20]
+[ext_resource path="res://Menu/Graphics/Button/ButtonNormalGreen.png" type="Texture" id=21]
+[ext_resource path="res://Menu/GameModeMenu/ModeMenu.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Menu/MapSelect/SelectedPreview.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Audio/Menu/ButtonMapSelect.wav" type="AudioStream" id=24]
+
+[sub_resource type="StyleBoxTexture" id=1]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 20 )
+region_rect = Rect2( 0, 0, 340, 80 )
+margin_left = 20.0
+margin_right = 87.0
+margin_top = 20.0
+margin_bottom = 20.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+_sections_unfolded = [ "Margin" ]
+
+[sub_resource type="StyleBoxTexture" id=2]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 20 )
+region_rect = Rect2( 0, 0, 340, 80 )
+margin_left = 20.0
+margin_right = 87.0
+margin_top = 20.0
+margin_bottom = 20.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+_sections_unfolded = [ "Margin" ]
+
+[sub_resource type="StyleBoxTexture" id=3]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 340, 80 )
+margin_left = 20.0
+margin_right = 87.0
+margin_top = 20.0
+margin_bottom = 20.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+_sections_unfolded = [ "Margin" ]
+
+[sub_resource type="Animation" id=4]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Selection:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayBtn:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ChangeModeBtn:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BackToMenuButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Header:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="MapSelect" type="TextureRect" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 0
+script = ExtResource( 3 )
+_sections_unfolded = [ "Rect", "Visibility" ]
+loadingScene = ExtResource( 4 )
+
+[node name="Selection" type="TextureRect" parent="." index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -695.0
+margin_top = -411.0
+margin_right = 433.0
+margin_bottom = 403.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 5
+size_flags_vertical = 5
+texture = ExtResource( 5 )
+stretch_mode = 0
+_sections_unfolded = [ "Focus", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "Visibility" ]
+
+[node name="CrossroadBtn" parent="Selection" index="0" instance=ExtResource( 6 )]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 170.0
+margin_top = -164.0
+margin_right = 201.0
+margin_bottom = -134.0
+focus_neighbour_left = NodePath("../DigInBtn")
+focus_neighbour_bottom = NodePath("../LandingZoneBtn")
+size_flags_horizontal = 5
+size_flags_vertical = 5
+_sections_unfolded = [ "Focus", "Rect", "Textures" ]
+mapPreview = ExtResource( 7 )
+gameScenePath = "res://Game/TestScenesCorni/Crossroads.tscn"
+gameName = "Crossroad"
+
+[node name="FortresssBtn" parent="Selection" index="1" instance=ExtResource( 6 )]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -280.0
+margin_top = -189.0
+margin_right = -249.0
+margin_bottom = -159.0
+focus_neighbour_right = NodePath("../DigInBtn")
+focus_neighbour_bottom = NodePath("../HotStuffBtn")
+size_flags_horizontal = 5
+size_flags_vertical = 5
+mapPreview = ExtResource( 8 )
+gameScenePath = "res://Game/TestScenesCorni/Fortress.tscn"
+gameName = "Fortresss"
+
+[node name="DigInBtn" parent="Selection" index="2" instance=ExtResource( 6 )]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -141.0
+margin_top = -107.0
+margin_right = -110.0
+margin_bottom = -77.0
+focus_neighbour_left = NodePath("../FortresssBtn")
+focus_neighbour_right = NodePath("../CrossroadBtn")
+focus_neighbour_bottom = NodePath("../DesolationBtn")
+size_flags_horizontal = 5
+size_flags_vertical = 5
+_sections_unfolded = [ "Focus", "Rect", "Textures", "Visibility" ]
+mapPreview = ExtResource( 9 )
+gameScenePath = "res://Game/TestScenesCorni/DigIn.tscn"
+gameName = "DigIn"
+
+[node name="DesolationBtn" parent="Selection" index="3" instance=ExtResource( 6 )]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -113.0
+margin_top = 162.0
+margin_right = -82.0
+margin_bottom = 192.0
+focus_neighbour_left = NodePath("../FactoryBtn")
+focus_neighbour_right = NodePath("../TheRealCircleBtn")
+focus_neighbour_bottom = NodePath("../../PlayBtn")
+size_flags_horizontal = 5
+size_flags_vertical = 5
+_sections_unfolded = [ "Focus", "Rect", "Size Flags", "Textures" ]
+mapPreview = ExtResource( 10 )
+gameScenePath = "res://Game/TestScenesLinus/Desolation.tscn"
+gameName = "Desolation"
+
+[node name="FactoryBtn" parent="Selection" index="4" instance=ExtResource( 6 )]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -321.0
+margin_top = 155.0
+margin_right = -290.0
+margin_bottom = 185.0
+focus_neighbour_top = NodePath("../HotStuffBtn")
+focus_neighbour_right = NodePath("../DesolationBtn")
+size_flags_horizontal = 5
+size_flags_vertical = 5
+_sections_unfolded = [ "Focus", "Size Flags", "Textures" ]
+mapPreview = ExtResource( 11 )
+gameScenePath = "res://Game/TestScenesLinus/Factory.tscn"
+gameName = "Factory"
+
+[node name="LandingZoneBtn" parent="Selection" index="5" instance=ExtResource( 6 )]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 207.0
+margin_top = -19.0
+margin_right = 238.0
+margin_bottom = 11.0
+focus_neighbour_top = NodePath("../CrossroadBtn")
+size_flags_horizontal = 5
+size_flags_vertical = 5
+_sections_unfolded = [ "Focus", "Rect", "Size Flags", "Textures" ]
+mapPreview = ExtResource( 12 )
+gameScenePath = "res://Game/TestScenesLinus/LandingZone.tscn"
+gameName = "Landing Zone"
+
+[node name="SolarFramBtn" parent="Selection" index="6" instance=ExtResource( 6 )]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 188.0
+margin_top = 110.0
+margin_right = 219.0
+margin_bottom = 140.0
+focus_neighbour_left = NodePath("../DesolationBtn")
+focus_neighbour_top = NodePath("../LandingZoneBtn")
+focus_neighbour_bottom = NodePath("../TheRealCircleBtn")
+size_flags_horizontal = 5
+size_flags_vertical = 5
+_sections_unfolded = [ "Focus", "Rect", "Size Flags", "Textures" ]
+mapPreview = ExtResource( 13 )
+gameScenePath = "res://Game/TestScenesLinus/SolarFarm.tscn"
+gameName = "SolarFarm"
+
+[node name="HotStuffBtn" parent="Selection" index="7" instance=ExtResource( 6 )]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -373.0
+margin_top = -61.0
+margin_right = -342.0
+margin_bottom = -31.0
+focus_neighbour_top = NodePath("../FortresssBtn")
+focus_neighbour_right = NodePath("../DigInBtn")
+focus_neighbour_bottom = NodePath("../FactoryBtn")
+size_flags_horizontal = 5
+size_flags_vertical = 5
+_sections_unfolded = [ "Focus", "Size Flags", "Textures" ]
+mapPreview = ExtResource( 14 )
+gameScenePath = "res://Game/TestScenesLinus/HotStuff.tscn"
+gameName = "HotStuff"
+
+[node name="TheRealCircleBtn" parent="Selection" index="8" instance=ExtResource( 6 )]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 155.0
+margin_top = 215.0
+margin_right = 186.0
+margin_bottom = 245.0
+focus_neighbour_left = NodePath("../DesolationBtn")
+focus_neighbour_top = NodePath("../SolarFramBtn")
+focus_neighbour_bottom = NodePath("../../PlayBtn")
+size_flags_horizontal = 5
+size_flags_vertical = 5
+_sections_unfolded = [ "Focus", "Rect", "Textures" ]
+mapPreview = ExtResource( 15 )
+gameScenePath = "res://Game/TestScenesChris/TheRealCircle.tscn"
+gameName = "The Real Circle"
+
+[node name="Glitch" parent="Selection" index="9" instance=ExtResource( 16 )]
+
+_sections_unfolded = [ "Material", "Mouse", "Rect", "Theme" ]
+
+[node name="Header" type="Label" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 601.0
+margin_bottom = 150.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 17 )
+text = "Map Selection"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
+
+[node name="BackToMenuButton" parent="." index="2" instance=ExtResource( 18 )]
+
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = -130.0
+margin_right = 374.0
+margin_bottom = -40.0
+focus_neighbour_left = NodePath("../ChangeModeBtn")
+focus_neighbour_top = NodePath("../Selection/FactoryBtn")
+focus_neighbour_right = NodePath("../PlayBtn")
+align = 0
+_sections_unfolded = [ "Focus", "Rect", "Textures", "Theme", "Visibility" ]
+
+[node name="ChangeModeBtn" type="Button" parent="." index="3"]
+
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -413.0
+margin_top = -130.0
+margin_right = -89.0
+margin_bottom = -40.0
+rect_min_size = Vector2( 324, 90 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_neighbour_left = NodePath("../PlayBtn")
+focus_neighbour_right = NodePath("../BackToMenuButton")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 19 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Change Mode"
+flat = false
+align = 0
+_sections_unfolded = [ "Focus", "Rect", "Theme", "Visibility" ]
+
+[node name="PlayBtn" type="Button" parent="." index="4"]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -160.0
+margin_top = -130.0
+margin_right = 164.0
+margin_bottom = -40.0
+rect_min_size = Vector2( 324, 90 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_neighbour_left = NodePath("../BackToMenuButton")
+focus_neighbour_right = NodePath("../ChangeModeBtn")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 19 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+disabled = true
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Play"
+flat = false
+align = 1
+_sections_unfolded = [ "Focus", "Hint", "Mouse", "Rect", "Theme", "Visibility", "custom_styles" ]
+
+[node name="ModeMenu" parent="." index="5" instance=ExtResource( 22 )]
+
+margin_top = -374.0
+margin_bottom = 373.0
+onCloseFocus = NodePath(".")
+
+[node name="SelectedPreview" parent="." index="6" instance=ExtResource( 23 )]
+
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -450.0
+margin_top = -425.0
+margin_right = -50.0
+margin_bottom = 287.0
+
+[node name="MapSelectedAudio" type="AudioStreamPlayer" parent="." index="7"]
+
+stream = ExtResource( 24 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "VFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+
+root_node = NodePath("..")
+autoplay = "FadeIn"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/FadeIn = SubResource( 4 )
+blend_times = [  ]
+
+[connection signal="pressed" from="ChangeModeBtn" to="ModeMenu" method="openClose"]
+
+[connection signal="pressed" from="PlayBtn" to="." method="onLoadScene"]
+
+[connection signal="deselect" from="ModeMenu" to="SelectedPreview" method="onDeselectModePreview"]
+
+[connection signal="hide" from="ModeMenu" to="." method="setFocus"]
+
+[connection signal="modePicked" from="ModeMenu" to="SelectedPreview" method="setMode"]
+
+[connection signal="preview" from="ModeMenu" to="SelectedPreview" method="onModePreview"]
+
+

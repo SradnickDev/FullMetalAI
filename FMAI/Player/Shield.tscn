@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Player/Scripts/Shield.gd" type="Script" id=1]
+[ext_resource path="res://VFX/Assets/Objects/ShieldEffect.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Player/Shield.tres" type="Material" id=3]
+
+[sub_resource type="Animation" id=1]
+
+length = 20.0
+loop = false
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShieldEffect:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 90, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ShieldEffect:material/0:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0.196078 ) ]
+}
+
+[node name="Shield" type="Spatial" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="ShieldEffect" type="MeshInstance" parent="." index="0"]
+
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.566616, 0 )
+visible = false
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 2 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 3 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="ShieldEffect2" type="MeshInstance" parent="ShieldEffect" index="0"]
+
+transform = Transform( 1, -8.74228e-008, -8.74228e-008, -8.74228e-008, -1, 0, -8.74228e-008, 7.64274e-015, -1, 0, 0.00298451, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 2 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 3 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Play = SubResource( 1 )
+blend_times = [  ]
+
+

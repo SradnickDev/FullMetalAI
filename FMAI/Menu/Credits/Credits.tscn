@@ -1,0 +1,559 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Menu/Graphics/theme/defaultTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Menu/Graphics/Background/BackgroundPlaceholder.png" type="Texture" id=2]
+[ext_resource path="res://Menu/GrabFocus.gd" type="Script" id=3]
+[ext_resource path="res://Menu/GlitchEffect/Glitch.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Menu/Graphics/theme/font/FontDerelictRoughBig.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Menu/Buttons/BackToMenuButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Menu/Graphics/theme/MasterTheme.tres" type="Theme" id=7]
+[ext_resource path="res://Menu/Graphics/Panel/panel.png" type="Texture" id=8]
+[ext_resource path="res://Menu/Graphics/theme/font/FontDerelictRegularBig.tres" type="DynamicFont" id=9]
+[ext_resource path="res://Menu/Graphics/theme/font/FontDerelictRegularSmall.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Menu/Credits/S4GLogo.png" type="Texture" id=11]
+
+
+[node name="Credits" type="TextureRect" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.0
+margin_bottom = -1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 0
+script = ExtResource( 3 )
+nodePath = NodePath("BackToMenuButton")
+
+[node name="Glitch" parent="." index="0" instance=ExtResource( 4 )]
+
+[node name="Header" type="Label" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 421.0
+margin_bottom = 150.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 5 )
+text = "Credits"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Rect" ]
+
+[node name="BackToMenuButton" parent="." index="2" instance=ExtResource( 6 )]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -900.0
+margin_top = -130.0
+margin_right = -576.0
+margin_bottom = -40.0
+align = 0
+
+[node name="Panel" type="NinePatchRect" parent="." index="3"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -469.0
+margin_top = -355.0
+margin_right = 468.0
+margin_bottom = 354.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 7 )
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 539, 327 )
+patch_margin_left = 60
+patch_margin_top = 79
+patch_margin_right = 286
+patch_margin_bottom = 129
+_sections_unfolded = [ "Theme" ]
+
+[node name="Teiler" type="HBoxContainer" parent="Panel" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -297.5
+margin_top = -279.5
+margin_right = 296.5
+margin_bottom = 125.5
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 100
+alignment = 0
+_sections_unfolded = [ "Grow Direction", "Margin", "Size Flags", "custom_constants" ]
+
+[node name="Departments" type="VBoxContainer" parent="Panel/Teiler" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 235.0
+margin_bottom = 405.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.0
+custom_constants/separation = 100
+alignment = 1
+_sections_unfolded = [ "Margin", "Rect", "Size Flags", "custom_constants" ]
+
+[node name="Production" type="VBoxContainer" parent="Panel/Teiler/Departments" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 14.0
+margin_right = 235.0
+margin_bottom = 123.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 3
+alignment = 1
+_sections_unfolded = [ "Anchor", "Rect", "custom_constants" ]
+
+[node name="Header" type="Label" parent="Panel/Teiler/Departments/Production" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 235.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 235, 80 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 9 )
+text = "Production"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Rect", "custom_fonts" ]
+
+[node name="Name" type="Label" parent="Panel/Teiler/Departments/Production" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 83.0
+margin_right = 235.0
+margin_bottom = 109.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 10 )
+text = "Martin Herrenkind"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts", "custom_styles" ]
+
+[node name="GameDesign" type="VBoxContainer" parent="Panel/Teiler/Departments" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 223.0
+margin_right = 235.0
+margin_bottom = 390.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 3
+alignment = 1
+_sections_unfolded = [ "Rect", "custom_constants" ]
+
+[node name="Header" type="Label" parent="Panel/Teiler/Departments/GameDesign" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 235.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 235, 80 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 9 )
+text = "Game Design"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Name" type="Label" parent="Panel/Teiler/Departments/GameDesign" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 83.0
+margin_right = 235.0
+margin_bottom = 109.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 10 )
+text = "Christian Leder"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Name2" type="Label" parent="Panel/Teiler/Departments/GameDesign" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 112.0
+margin_right = 235.0
+margin_bottom = 138.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 10 )
+text = "Linus  von der Kammer"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Name3" type="Label" parent="Panel/Teiler/Departments/GameDesign" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 141.0
+margin_right = 235.0
+margin_bottom = 167.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 10 )
+text = "Cornelius Nitschkoff"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Departments2" type="VBoxContainer" parent="Panel/Teiler" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 335.0
+margin_right = 594.0
+margin_bottom = 405.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 100
+alignment = 1
+_sections_unfolded = [ "Margin", "Rect", "custom_constants" ]
+
+[node name="Programming" type="VBoxContainer" parent="Panel/Teiler/Departments2" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 259.0
+margin_bottom = 109.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 3
+alignment = 1
+_sections_unfolded = [ "Rect", "custom_constants" ]
+
+[node name="Header" type="Label" parent="Panel/Teiler/Departments2/Programming" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 259.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 235, 80 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 9 )
+text = "Programming"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Name" type="Label" parent="Panel/Teiler/Departments2/Programming" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 83.0
+margin_right = 259.0
+margin_bottom = 109.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 10 )
+text = "Oliver Sradnick"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Art" type="VBoxContainer" parent="Panel/Teiler/Departments2" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 209.0
+margin_right = 259.0
+margin_bottom = 405.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 3
+alignment = 1
+_sections_unfolded = [ "Rect", "custom_constants" ]
+
+[node name="Header" type="Label" parent="Panel/Teiler/Departments2/Art" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 259.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 235, 80 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 9 )
+text = "Art"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Name" type="Label" parent="Panel/Teiler/Departments2/Art" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 83.0
+margin_right = 259.0
+margin_bottom = 109.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 10 )
+text = "Philipp Busse"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Name2" type="Label" parent="Panel/Teiler/Departments2/Art" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 112.0
+margin_right = 259.0
+margin_bottom = 138.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 10 )
+text = "Luca Hintzen"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Name3" type="Label" parent="Panel/Teiler/Departments2/Art" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 141.0
+margin_right = 259.0
+margin_bottom = 167.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 10 )
+text = "Nora Symmank"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Name4" type="Label" parent="Panel/Teiler/Departments2/Art" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 170.0
+margin_right = 259.0
+margin_bottom = 196.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 10 )
+text = "Pierre Grimme"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="S4GLogo" type="TextureRect" parent="Panel" index="1"]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -129.5
+margin_top = -188.0
+margin_right = 129.5
+margin_bottom = -84.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 0
+
+

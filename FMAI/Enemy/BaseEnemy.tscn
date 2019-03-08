@@ -1,0 +1,199 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Enemy/Scripts/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Enemy/Scripts/SteeringBehaviour/SteeringBehaviour.gd" type="Script" id=2]
+[ext_resource path="res://Enemy/Scripts/SteeringBehaviour/Seek.gd" type="Script" id=3]
+[ext_resource path="res://Enemy/ComfortZone.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemy/Scripts/NavAgent.gd" type="Script" id=5]
+[ext_resource path="res://Enemy/Model/Enemy.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://Enemy/BaseEnemy.tres" type="Material" id=7]
+[ext_resource path="res://Materials/Enemy/EnemyEmissive.tres" type="Material" id=8]
+[ext_resource path="res://Enemy/Scripts/StateNotifier.gd" type="Script" id=9]
+[ext_resource path="res://Enemy/Scripts/DistanceCheck.gd" type="Script" id=10]
+[ext_resource path="res://Enemy/Scripts/Stun.gd" type="Script" id=11]
+[ext_resource path="res://VFX/Characters/StunEffect.tscn" type="PackedScene" id=12]
+[ext_resource path="res://PowerUps/PowerUpDropTable.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Player/Shield.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Audio/Enemy/AudioEnemyAttackAudio.wav" type="AudioStream" id=15]
+[ext_resource path="res://PowerUps/EffectParent.gd" type="Script" id=16]
+[ext_resource path="res://VFX/Characters/Enemy/EnemyDeathEffect.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Audio/Enemy/AudioEnemyDeathAudio.wav" type="AudioStream" id=18]
+[ext_resource path="res://Audio/Audio.gd" type="Script" id=19]
+[ext_resource path="res://VFX/Characters/Enemy/EnemyAttack.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Enemy/DirectionIndicator.tscn" type="PackedScene" id=21]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 1, 1.5, 1 )
+
+[node name="EnemyBase" type="KinematicBody" index="0" groups=[
+"Enemy",
+]]
+
+input_ray_pickable = false
+input_capture_on_drag = false
+collision_layer = 2
+collision_mask = 9
+axis_lock_linear_x = false
+axis_lock_linear_y = true
+axis_lock_linear_z = false
+axis_lock_angular_x = false
+axis_lock_angular_y = true
+axis_lock_angular_z = false
+collision/safe_margin = 0.001
+script = ExtResource( 1 )
+_sections_unfolded = [ "Axis Lock", "Collision", "Transform", "Visibility", "collision" ]
+maxHealth = 200.0
+speed = 10.0
+damagePerHit = 10.0
+attackRange = 5.0
+attackRate = 0.5
+shieldProbability = 0.05
+
+[node name="SteeringBehaviour" type="Spatial" parent="." index="0"]
+
+editor/display_folded = true
+script = ExtResource( 2 )
+
+[node name="Seek" type="Spatial" parent="SteeringBehaviour" index="0"]
+
+script = ExtResource( 3 )
+force = 1.0
+
+[node name="ComfortZone" parent="SteeringBehaviour" index="1" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99365, 0 )
+comfortZoneUpdateRate = 1.0
+seperationForce = 5.0
+
+[node name="NavAgent" type="Node" parent="." index="1"]
+
+pause_mode = 2
+editor/display_folded = true
+script = ExtResource( 5 )
+_sections_unfolded = [ "Pause" ]
+pathUpdateRate = 1.0
+useThreads = false
+
+[node name="UpdateTimer" type="Timer" parent="NavAgent" index="0"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="2"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+shape = SubResource( 1 )
+disabled = false
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="." index="3"]
+
+editor/display_folded = true
+transform = Transform( -1, 0, 8.74228e-008, 0, 1, 0, -8.74228e-008, 0, -1, 0, 2, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 6 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 7 )
+material/1 = ExtResource( 8 )
+material/2 = ExtResource( 8 )
+script = ExtResource( 9 )
+_sections_unfolded = [ "Geometry", "Transform", "material" ]
+evaluateColor = Color( 1, 1, 1, 1 )
+notifiyColor = Color( 0, 0, 0, 1 )
+replaceThirdEmission = true
+
+[node name="Tween" type="Tween" parent="MeshInstance" index="0"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="AttackRateTimer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = false
+
+[node name="DistanceCheck" type="Node" parent="." index="5"]
+
+script = ExtResource( 10 )
+
+[node name="Stun" type="Spatial" parent="." index="6"]
+
+script = ExtResource( 11 )
+defaultDuration = 0
+
+[node name="StunEffect" parent="Stun" index="0" instance=ExtResource( 12 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1445, 0 )
+
+[node name="StunAudio" type="AudioStreamPlayer" parent="Stun" index="1"]
+
+stream = null
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="PowerUpDropTable" parent="." index="7" instance=ExtResource( 13 )]
+
+[node name="Shield" parent="." index="8" instance=ExtResource( 14 )]
+
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 2.00656, 0 )
+
+[node name="AttackAudio" type="AudioStreamPlayer" parent="." index="9"]
+
+stream = ExtResource( 15 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "VFX"
+
+[node name="EffectParent" type="Spatial" parent="." index="10"]
+
+script = ExtResource( 16 )
+ignoreAudio = false
+
+[node name="EnemyDeathEffect" parent="EffectParent" index="0" instance=ExtResource( 17 )]
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="EffectParent" index="1"]
+
+stream = ExtResource( 18 )
+volume_db = 10.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "VFX"
+script = ExtResource( 19 )
+
+[node name="AttackEffect" parent="." index="11" instance=ExtResource( 20 )]
+
+transform = Transform( -0.6, 0, 4.37114e-008, 0, 0.6, 0, -5.24537e-008, 0, -0.5, 0, 2, -1.5 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="DirectionIndicator" parent="." index="12" instance=ExtResource( 21 )]
+
+[connection signal="timeout" from="NavAgent/UpdateTimer" to="NavAgent" method="_on_UpdateTimer_timeout"]
+
+[connection signal="finished" from="EffectParent/DeathAudio" to="EffectParent/DeathAudio" method="_on_HitAudio_finished"]
+
+
+[editable path="SteeringBehaviour/ComfortZone"]

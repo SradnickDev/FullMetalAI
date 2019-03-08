@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Menu/HUD/Scripts/Interface.gd" type="Script" id=1]
+[ext_resource path="res://Menu/HUD/HealthBar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Menu/HUD/Bars/ShieldBar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Menu/HUD/OverlcockBar.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+render_priority = 0
+blend_mode = 1
+light_mode = 0
+
+[node name="Bars" type="Control" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 400.0
+margin_bottom = 333.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Material" ]
+
+[node name="HealthBar" parent="." index="0" instance=ExtResource( 2 )]
+
+material = SubResource( 1 )
+margin_right = 145.0
+margin_bottom = 0.0
+
+[node name="ShieldBar" parent="." index="1" instance=ExtResource( 3 )]
+
+visible = false
+value = 4.0
+
+[node name="OverlcockBar" parent="." index="2" instance=ExtResource( 4 )]
+
+margin_left = -146.0
+margin_right = -1.0
+margin_bottom = 0.0
+value = 0.0
+
+

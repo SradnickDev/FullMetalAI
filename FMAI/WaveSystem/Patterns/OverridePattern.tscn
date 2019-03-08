@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://WaveSystem/Wave.gd" type="Script" id=1]
+[ext_resource path="res://WaveSystem/WeightedEnemies/WeightedEnemies.tscn" type="PackedScene" id=2]
+
+[node name="OverridePattern" type="Node"]
+
+script = ExtResource( 1 )
+setDefault = false
+overrideWave = 0
+increasePerWave = 0
+defaultAmount = 0
+timeBetweenSpawn = 0
+randomSpawnRange = 0
+
+[node name="EnemiesDefault" parent="." index="0" instance=ExtResource( 2 )]
+
+

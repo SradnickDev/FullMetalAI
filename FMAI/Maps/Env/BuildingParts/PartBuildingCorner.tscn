@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Maps/Env/BuildingParts/PartWall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/Env/BuildingParts/PartRoof.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Maps/Env/BuildingParts/PartCorner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Maps/Env/BuildingParts/PartRoofBeam.tscn" type="PackedScene" id=4]
+
+[node name="PartBuildingCorner" type="Spatial" index="0"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="PartWall" parent="." index="0" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="PartWall2" parent="." index="1" instance=ExtResource( 1 )]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 2, 0, 0 )
+
+[node name="PartRoof" parent="." index="2" instance=ExtResource( 2 )]
+
+[node name="PartCorner" parent="." index="3" instance=ExtResource( 3 )]
+
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2, 0, 2 )
+
+[node name="PartRoofBeam" parent="." index="4" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
+_sections_unfolded = [ "Transform", "material" ]
+
+

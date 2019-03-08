@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://WeightedObjects/WeightedObjects.gd" type="Script" id=1]
+[ext_resource path="res://WeightedObjects/WeightedObject.gd" type="Script" id=2]
+[ext_resource path="res://PowerUps/HealthPowerUp.tscn" type="PackedScene" id=3]
+[ext_resource path="res://PowerUps/SpeedPowerUp.tscn" type="PackedScene" id=4]
+[ext_resource path="res://PowerUps/AttackSpeedPowerUp.tscn" type="PackedScene" id=5]
+[ext_resource path="res://PowerUps/ShieldPowerUp.tscn" type="PackedScene" id=6]
+[ext_resource path="res://PowerUps/DecoyPowerUp.tscn" type="PackedScene" id=7]
+
+[node name="WeightedDrops" type="Node" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="EmptyDrop" type="Node" parent="." index="0"]
+
+script = ExtResource( 2 )
+targetObject = null
+weight = 95.1
+
+[node name="HealthDrop" type="Node" parent="." index="1"]
+
+script = ExtResource( 2 )
+targetObject = ExtResource( 3 )
+weight = 5.1
+
+[node name="SpeedDrop" type="Node" parent="." index="2"]
+
+script = ExtResource( 2 )
+targetObject = ExtResource( 4 )
+weight = 5.1
+
+[node name="AttackSpeedDrop" type="Node" parent="." index="3"]
+
+script = ExtResource( 2 )
+targetObject = ExtResource( 5 )
+weight = 5.1
+
+[node name="ShieldDrop" type="Node" parent="." index="4"]
+
+script = ExtResource( 2 )
+targetObject = ExtResource( 6 )
+weight = 5.1
+
+[node name="DecoyDrop" type="Node" parent="." index="5"]
+
+script = ExtResource( 2 )
+targetObject = ExtResource( 7 )
+weight = 5.1
+
+

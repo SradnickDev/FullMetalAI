@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Weapon/Scripts/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://Audio/Weapons/BulletImpact.wav" type="AudioStream" id=2]
+[ext_resource path="res://Audio/Audio.gd" type="Script" id=3]
+[ext_resource path="res://Audio/Weapons/BulletImpact2.wav" type="AudioStream" id=4]
+[ext_resource path="res://VFX/Weapons/MachineGun/TrailBullet.tscn" type="PackedScene" id=5]
+[ext_resource path="res://VFX/Characters/HitEffectSparkle.tscn" type="PackedScene" id=6]
+
+
+
+[sub_resource type="SphereShape" id=1]
+
+radius = 1.0
+
+[node name="Bullet" type="KinematicBody" index="0"]
+
+input_ray_pickable = false
+input_capture_on_drag = false
+collision_layer = 4
+collision_mask = 10
+axis_lock_linear_x = false
+axis_lock_linear_y = false
+axis_lock_linear_z = false
+axis_lock_angular_x = false
+axis_lock_angular_y = false
+axis_lock_angular_z = false
+collision/safe_margin = 0.001
+script = ExtResource( 1 )
+_sections_unfolded = [ "Audio Bus", "Axis Lock", "Collision", "Transform", "collision" ]
+lifeTime = 2.0
+speed = 70.0
+damage = 20.0
+bounceCounter = 2
+
+[node name="AreaCollision" type="CollisionShape" parent="." index="0"]
+
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+shape = SubResource( 1 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="HitAudio" type="AudioStreamPlayer" parent="." index="1"]
+
+stream = ExtResource( 2 )
+volume_db = -10.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "VFX"
+script = ExtResource( 3 )
+
+[node name="ReflectAudio" type="AudioStreamPlayer" parent="." index="2"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "VFX"
+script = ExtResource( 3 )
+
+[node name="BulletTrail" parent="." index="3" instance=ExtResource( 5 )]
+
+transform = Transform( 0.3, 0, 0, 0, -1.31134e-008, 0.5, 0, -0.3, -2.18557e-008, 0, 0, -0.329473 )
+
+[node name="HitEffectSparkle" parent="." index="4" instance=ExtResource( 6 )]
+
+useAnimationPlayer = false
+animationName = ""
+destroyOnFinished = false
+forceRestart = true
+
+[node name="LifeTime" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[connection signal="colliding" from="." to="HitAudio" method="_on_colliding"]
+
+[connection signal="finished" from="HitAudio" to="HitAudio" method="_on_HitAudio_finished"]
+
+

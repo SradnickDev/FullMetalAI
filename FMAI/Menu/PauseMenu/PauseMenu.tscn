@@ -1,0 +1,217 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Menu/PauseMenu/PauseMenu.gd" type="Script" id=1]
+[ext_resource path="res://Menu/Graphics/Panel/panel.png" type="Texture" id=2]
+[ext_resource path="res://Menu/Graphics/theme/font/FontDerelictRegularBig.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Menu/Options/OptionsContent.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Menu/Graphics/theme/MasterTheme.tres" type="Theme" id=5]
+[ext_resource path="res://Menu/Graphics/theme/font/FontDerelictRegularSmall.tres" type="DynamicFont" id=6]
+
+[node name="PauseMenu" type="Control" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -2.0
+margin_bottom = -2.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
+
+[node name="MenuPanel" type="NinePatchRect" parent="." index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -397.5
+margin_top = -357.5
+margin_right = 397.5
+margin_bottom = 357.5
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 2 )
+patch_margin_left = 36
+patch_margin_top = 70
+patch_margin_right = 154
+patch_margin_bottom = 117
+_sections_unfolded = [ "Patch Margin", "Pause" ]
+
+[node name="Header" type="Label" parent="MenuPanel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_top = 47.0
+margin_bottom = 147.0
+rect_min_size = Vector2( 300, 100 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 3 )
+text = "Pause"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Rect", "custom_fonts" ]
+
+[node name="OptionsContent" parent="MenuPanel" index="1" instance=ExtResource( 4 )]
+
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -202.5
+margin_top = -189.5
+margin_right = 202.5
+margin_bottom = 181.5
+_sections_unfolded = [ "Margin", "Rect", "custom_constants" ]
+
+[node name="Settings" parent="MenuPanel/OptionsContent" index="0"]
+
+editor/display_folded = false
+
+[node name="VSyncToggle" parent="MenuPanel/OptionsContent/Settings" index="0"]
+
+focus_neighbour_top = NodePath("../../../BottomButtons/Resume")
+
+[node name="Slider" parent="MenuPanel/OptionsContent/Audio/EffectSlider" index="2"]
+
+focus_neighbour_bottom = NodePath("../../../../BottomButtons/Resume")
+
+[node name="BottomButtons" type="HBoxContainer" parent="MenuPanel" index="2"]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -331.5
+margin_top = -132.0
+margin_right = 339.5
+margin_bottom = -61.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 30
+alignment = 0
+_sections_unfolded = [ "Margin", "Rect", "custom_constants" ]
+
+[node name="QuitMatch" type="Button" parent="MenuPanel/BottomButtons" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 218.0
+margin_bottom = 71.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_neighbour_left = NodePath("../RestartButton")
+focus_neighbour_top = NodePath("../../OptionsContent/Audio/EffectSlider/Slider")
+focus_neighbour_right = NodePath("../Resume")
+focus_neighbour_bottom = NodePath("../../OptionsContent/Settings/VSyncToggle")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Quit Match"
+flat = false
+align = 0
+_sections_unfolded = [ "Focus", "Rect", "Textures", "Theme" ]
+
+[node name="Resume" type="Button" parent="MenuPanel/BottomButtons" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 248.0
+margin_right = 444.0
+margin_bottom = 71.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_neighbour_left = NodePath("../QuitMatch")
+focus_neighbour_top = NodePath("../../OptionsContent/Audio/EffectSlider/Slider")
+focus_neighbour_right = NodePath("../RestartButton")
+focus_neighbour_bottom = NodePath("../../OptionsContent/Settings/VSyncToggle")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Resume"
+flat = false
+align = 0
+_sections_unfolded = [ "Focus", "Rect", "Textures", "Theme" ]
+
+[node name="RestartButton" type="Button" parent="MenuPanel/BottomButtons" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 474.0
+margin_right = 671.0
+margin_bottom = 71.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_neighbour_left = NodePath("../Resume")
+focus_neighbour_top = NodePath("../../OptionsContent/Audio/EffectSlider/Slider")
+focus_neighbour_right = NodePath("../QuitMatch")
+focus_neighbour_bottom = NodePath("../../OptionsContent/Settings/VSyncToggle")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Restart"
+flat = false
+align = 0
+_sections_unfolded = [ "Focus", "Rect", "Textures", "Theme" ]
+
+[connection signal="pressed" from="MenuPanel/BottomButtons/QuitMatch" to="." method="onQuitButtonPressed"]
+
+[connection signal="pressed" from="MenuPanel/BottomButtons/Resume" to="." method="onResumeButtonPressed"]
+
+[connection signal="pressed" from="MenuPanel/BottomButtons/RestartButton" to="." method="onRestartButtonPressed"]
+
+
+[editable path="MenuPanel/OptionsContent"]
+[editable path="MenuPanel/OptionsContent/Audio/MusicSlider"]
+[editable path="MenuPanel/OptionsContent/Audio/EffectSlider"]

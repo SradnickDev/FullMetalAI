@@ -1,0 +1,288 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Maps/Env/Obstacle/LaserWall/LaserWall.gd" type="Script" id=1]
+[ext_resource path="res://VFX/Environment/LaserWallEffect.tscn" type="PackedScene" id=2]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 1, 2.42546, 2.4699 )
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "RotateAll"
+length = 60.0
+loop = true
+step = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 15, 20, 30, 35, 45, 50, 60 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 90, 0 ), Vector3( 0, 90, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 270, 0 ), Vector3( 0, 270, 0 ), Vector3( 0, 360, 0 ), Vector3( 0, 360, 0 ) ]
+}
+
+[node name="LaserWheel" type="Spatial" index="0"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall_1" type="Spatial" parent="." index="0"]
+
+editor/display_folded = true
+
+[node name="LaserWall" type="Spatial" parent="Wall_1" index="0"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+damage = 10.1
+useTimer = false
+switchTime = 5.1
+activated = true
+
+[node name="Entry" type="Area" parent="Wall_1/LaserWall" index="0"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 0
+collision_mask = 3
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="LaserEffect" parent="Wall_1/LaserWall/Entry" index="0" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 3.84217, 0, 0.0955038, 0 )
+
+[node name="DamageZone" type="CollisionShape" parent="Wall_1/LaserWall/Entry" index="1"]
+
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 1.38018, 0 )
+shape = SubResource( 1 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="SwitchTimer" type="Timer" parent="Wall_1/LaserWall" index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="LaserWall#2" type="Spatial" parent="Wall_1" index="1"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+damage = 10.1
+useTimer = false
+switchTime = 5.1
+activated = true
+
+[node name="Entry" type="Area" parent="Wall_1/LaserWall#2" index="0"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 0
+collision_mask = 3
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="LaserEffect" parent="Wall_1/LaserWall#2/Entry" index="0" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 3.84217, 0, 0.0955038, 0 )
+
+[node name="DamageZone" type="CollisionShape" parent="Wall_1/LaserWall#2/Entry" index="1"]
+
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 1.38018, 0 )
+shape = SubResource( 1 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="SwitchTimer" type="Timer" parent="Wall_1/LaserWall#2" index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="Wall_2" type="Spatial" parent="." index="1"]
+
+editor/display_folded = true
+
+[node name="LaserWall#3" type="Spatial" parent="Wall_2" index="0"]
+
+editor/display_folded = true
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -6, 0, 0 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+damage = 10.1
+useTimer = false
+switchTime = 5.1
+activated = true
+
+[node name="Entry" type="Area" parent="Wall_2/LaserWall#3" index="0"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 0
+collision_mask = 3
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="LaserEffect" parent="Wall_2/LaserWall#3/Entry" index="0" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 3.84217, 0, 0.0955038, 0 )
+
+[node name="DamageZone" type="CollisionShape" parent="Wall_2/LaserWall#3/Entry" index="1"]
+
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 1.38018, 0 )
+shape = SubResource( 1 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="SwitchTimer" type="Timer" parent="Wall_2/LaserWall#3" index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="LaserWall#4" type="Spatial" parent="Wall_2" index="1"]
+
+editor/display_folded = true
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 6, 0, 0 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+damage = 10.1
+useTimer = false
+switchTime = 5.1
+activated = true
+
+[node name="Entry" type="Area" parent="Wall_2/LaserWall#4" index="0"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 0
+collision_mask = 3
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="LaserEffect" parent="Wall_2/LaserWall#4/Entry" index="0" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 3.84217, 0, 0.0955038, 0 )
+
+[node name="DamageZone" type="CollisionShape" parent="Wall_2/LaserWall#4/Entry" index="1"]
+
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 1.38018, 0 )
+shape = SubResource( 1 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="SwitchTimer" type="Timer" parent="Wall_2/LaserWall#4" index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 10.0
+anims/RotateAll = SubResource( 2 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
+[connection signal="body_entered" from="Wall_1/LaserWall/Entry" to="Wall_1/LaserWall" method="_on_Entry_body_entered"]
+
+[connection signal="timeout" from="Wall_1/LaserWall/SwitchTimer" to="Wall_1/LaserWall" method="_on_SwitchTimer_timeout"]
+
+[connection signal="body_entered" from="Wall_1/LaserWall#2/Entry" to="Wall_1/LaserWall#2" method="_on_Entry_body_entered"]
+
+[connection signal="timeout" from="Wall_1/LaserWall#2/SwitchTimer" to="Wall_1/LaserWall#2" method="_on_SwitchTimer_timeout"]
+
+[connection signal="body_entered" from="Wall_2/LaserWall#3/Entry" to="Wall_2/LaserWall#3" method="_on_Entry_body_entered"]
+
+[connection signal="timeout" from="Wall_2/LaserWall#3/SwitchTimer" to="Wall_2/LaserWall#3" method="_on_SwitchTimer_timeout"]
+
+[connection signal="body_entered" from="Wall_2/LaserWall#4/Entry" to="Wall_2/LaserWall#4" method="_on_Entry_body_entered"]
+
+[connection signal="timeout" from="Wall_2/LaserWall#4/SwitchTimer" to="Wall_2/LaserWall#4" method="_on_SwitchTimer_timeout"]
+
+

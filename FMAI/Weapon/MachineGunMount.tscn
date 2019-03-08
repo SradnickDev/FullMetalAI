@@ -1,0 +1,241 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Weapon/Scripts/WeaponMount.gd" type="Script" id=1]
+[ext_resource path="res://Player/Model/PlayerMinigun.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Materials/PlayerWeapons.tres" type="Material" id=3]
+[ext_resource path="res://Weapon/Scripts/Weapon.gd" type="Script" id=4]
+[ext_resource path="res://Audio/Weapons/BulletImpact.wav" type="AudioStream" id=5]
+[ext_resource path="res://VFX/Weapons/MachineGun/MachineGunMuzzleFlash.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Player/Model/PlayerMinigunBarrel.obj" type="ArrayMesh" id=7]
+
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "BarrelRotation"
+length = 0.9
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Barrel:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 360 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "BarrelRotationOverclocked"
+length = 0.3
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("BarrelOverclocked:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 360 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+
+length = 0.4
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("MachineGunDefault:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -0.1 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, -0.25 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+
+length = 0.4
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("MachineGunOverclock:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -0.5 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, -0.5 ), Vector3( 0, 0, 0 ) ]
+}
+
+[node name="MachineGunMount" type="Spatial"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+defaultWeaponPath = NodePath("MachineGunDefault")
+overclockWeaponPath = NodePath("MachineGunOverclock")
+
+[node name="MachineGunDefault" type="MeshInstance" parent="." index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.069166 )
+visible = false
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 2 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 3 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform", "Visibility", "material" ]
+projectileName = "Bullet"
+fireRate = 0.1
+randomSpread = true
+spreadRadian = 0.1
+bulletAmount = 1
+
+[node name="ShootAudio" type="AudioStreamPlayer" parent="MachineGunDefault" index="0"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "VFX"
+
+[node name="MuzzlePosition" type="Position3D" parent="MachineGunDefault" index="1"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.604874, 0.971714, 1.43461 )
+
+[node name="MuzzleFlash" parent="MachineGunDefault" index="2" instance=ExtResource( 6 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.606237, 0.968218, 1.49861 )
+forceRestart = false
+
+[node name="Barrel" type="MeshInstance" parent="MachineGunDefault" index="3"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.610637, 0.96523, 0.29073 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 7 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 3 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="BarrelRotation" type="AnimationPlayer" parent="MachineGunDefault" index="4"]
+
+root_node = NodePath("..")
+autoplay = "BarrelRotation"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/BarrelRotation = SubResource( 1 )
+blend_times = [  ]
+
+[node name="MachineGunOverclock" type="MeshInstance" parent="." index="1"]
+
+transform = Transform( 1.22497, 0, 0, 0, 1.22497, 0, 0, 0, 1.22497, 0, 0, -0.669421 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 2 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 3 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform", "Visibility", "material" ]
+projectileName = "Bullet"
+fireRate = 0.075
+randomSpread = true
+spreadRadian = 0.25
+bulletAmount = 2
+
+[node name="ShootAudio" type="AudioStreamPlayer" parent="MachineGunOverclock" index="0"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "VFX"
+
+[node name="MuzzlePosition" type="Position3D" parent="MachineGunOverclock" index="1"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.610187, 0.964179, 1.49494 )
+
+[node name="MuzzleFlash" parent="MachineGunOverclock" index="2" instance=ExtResource( 6 )]
+
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0.611982, 0.994013, 1.62786 )
+forceRestart = false
+
+[node name="BarrelOverclocked" type="MeshInstance" parent="MachineGunOverclock" index="3"]
+
+transform = Transform( -0.831953, -0.554846, 0, 0.554846, -0.831953, 0, 0, 0, 1, 0.606441, 0.966168, 0.276973 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 7 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 3 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MachineGunOverclock" index="4"]
+
+root_node = NodePath("..")
+autoplay = "BarrelRotationOverclocked"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/BarrelRotationOverclocked = SubResource( 2 )
+blend_times = [  ]
+
+[node name="KickBackPlayer" type="AnimationPlayer" parent="." index="2"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Default = SubResource( 3 )
+anims/Overclock = SubResource( 4 )
+blend_times = [  ]
+
+

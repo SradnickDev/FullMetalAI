@@ -1,0 +1,190 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Weapon/Scripts/EMP.gd" type="Script" id=1]
+[ext_resource path="res://Audio/Weapons/EMPOverclockImpact.wav" type="AudioStream" id=2]
+[ext_resource path="res://Audio/Audio.gd" type="Script" id=3]
+[ext_resource path="res://Weapon/Projectile/EMP.tscn" type="PackedScene" id=4]
+[ext_resource path="res://PowerUps/EffectParent.gd" type="Script" id=5]
+[ext_resource path="res://VFX/Weapons/EMP/ExplosionEMP.tscn" type="PackedScene" id=6]
+
+[sub_resource type="SphereMesh" id=1]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+radius = 1.0
+height = 2.0
+radial_segments = 64
+rings = 32
+is_hemisphere = false
+
+[sub_resource type="SpatialMaterial" id=2]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 1, 0, 0, 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Albedo", "Emission" ]
+
+[sub_resource type="SphereShape" id=3]
+
+radius = 1.0
+
+[sub_resource type="SphereShape" id=4]
+
+radius = 0.52085
+
+[node name="EMPOverclock" type="KinematicBody"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 4
+collision_mask = 10
+axis_lock_linear_x = false
+axis_lock_linear_y = false
+axis_lock_linear_z = false
+axis_lock_angular_x = false
+axis_lock_angular_y = false
+axis_lock_angular_z = false
+collision/safe_margin = 0.001
+script = ExtResource( 1 )
+_sections_unfolded = [ "Audio Bus", "Collision", "Transform" ]
+lifeTime = 2.0
+speed = 50.0
+stunDuration = 2.0
+stunRadius = 10.0
+damage = 10
+EMPHitForce = 10
+areaCollisionPath = NodePath("AreaCollision")
+
+[node name="MeshInstance" type="MeshInstance" parent="." index="0"]
+
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+layers = 1
+material_override = null
+cast_shadow = 0
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = SubResource( 2 )
+_sections_unfolded = [ "Geometry", "Transform", "material" ]
+
+[node name="Collision" type="CollisionShape" parent="." index="1"]
+
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+shape = SubResource( 3 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="AreaCollision" type="Area" parent="." index="2"]
+
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 0
+collision_mask = 10
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="AreaCollision" index="0"]
+
+shape = SubResource( 4 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="HitAudio" type="AudioStreamPlayer" parent="." index="3"]
+
+stream = ExtResource( 2 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "VFX"
+script = ExtResource( 3 )
+
+[node name="EMP" parent="." index="4" instance=ExtResource( 4 )]
+
+transform = Transform( 2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, 0, 0, 0 )
+
+[node name="LifeTime" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="EffectParent" type="Spatial" parent="." index="6"]
+
+script = ExtResource( 5 )
+ignoreAudio = false
+
+[node name="EMPExplosion" parent="EffectParent" index="0" instance=ExtResource( 6 )]
+
+[connection signal="colliding" from="." to="HitAudio" method="_on_colliding"]
+
+[connection signal="finished" from="HitAudio" to="HitAudio" method="_on_HitAudio_finished"]
+
+
+[editable path="EMP"]
+[editable path="EMP/EMPBall"]

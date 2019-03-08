@@ -1,0 +1,704 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://VFX/Utilities/EffectPlayer.gd" type="Script" id=1]
+[ext_resource path="res://VFX/Assets/Objects/SpikeRing.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://VFX/Weapons/EMP/GradiantTexture02.png" type="Texture" id=3]
+[ext_resource path="res://VFX/Assets/Objects/Spike03.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://VFX/Weapons/EMP/GradiantTexture01.png" type="Texture" id=5]
+[ext_resource path="res://VFX/Assets/Objects/FlatSquare.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://VFX/Assets/Objects/EMPFlashLightning.obj" type="ArrayMesh" id=7]
+
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "Play"
+length = 0.25
+loop = false
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpikeRing:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Spike:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sparks:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Lightning:material_override:uv1_offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Lightning:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("OmniLight:light_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.25, 0.789063, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="SpatialMaterial" id=2]
+
+render_priority = 0
+flags_transparent = true
+flags_unshaded = true
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 2
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 1, 1, 1, 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Flags", "Parameters", "Vertex Color" ]
+
+[sub_resource type="Gradient" id=3]
+
+offsets = PoolRealArray( 0.0177515, 0.153846, 0.502959, 0.745562, 0.994083 )
+colors = PoolColorArray( 0.554688, 0.947815, 1, 1, 0, 0.953125, 1, 0.839765, 0, 0.25, 1, 0.344303, 1, 1, 1, 0, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=4]
+
+flags = 4
+gradient = SubResource( 3 )
+width = 2048
+
+[sub_resource type="Curve" id=5]
+
+min_value = 0.0
+max_value = 1.0
+bake_resolution = 100
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.502646, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+
+flags = 4
+width = 2048
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 45.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.1
+initial_velocity_random = 0.0
+angular_velocity = 360.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 0.07
+scale_random = 0.01
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Damping", "Emission Shape", "Flags", "Gravity", "Initial Velocity", "Linear Accel", "Radial Accel", "Scale", "Spread", "Tangential Accel", "Trail" ]
+
+[sub_resource type="SpatialMaterial" id=8]
+
+render_priority = 0
+flags_transparent = true
+flags_unshaded = true
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 2
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 1, 1, 1, 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = true
+emission = Color( 1, 1, 1, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 3 )
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0.9, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Albedo", "Emission", "Flags", "Parameters", "UV1", "Vertex Color" ]
+
+[sub_resource type="Gradient" id=9]
+
+offsets = PoolRealArray( 0, 0.39645, 0.91716 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.0664063, 0.824951, 1, 1, 0.1875, 0.48584, 1, 0.0331765 )
+
+[sub_resource type="GradientTexture" id=10]
+
+flags = 4
+gradient = SubResource( 9 )
+width = 2048
+
+[sub_resource type="Curve" id=11]
+
+min_value = 0.0
+max_value = 1.0
+bake_resolution = 100
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.251296, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=12]
+
+flags = 4
+width = 2048
+curve = SubResource( 11 )
+
+[sub_resource type="ParticlesMaterial" id=13]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 0
+flag_align_y = true
+flag_rotate_y = false
+flag_disable_z = false
+spread = 0.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.1
+initial_velocity_random = 0.0
+angular_velocity = 2.52234e-044
+angular_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 2.0
+scale_random = 0.0
+scale_curve = SubResource( 12 )
+color_ramp = SubResource( 10 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Color", "Emission Shape", "Flags", "Gravity", "Initial Velocity", "Scale", "Spread", "Trail" ]
+
+[sub_resource type="SpatialMaterial" id=14]
+
+render_priority = 0
+flags_transparent = true
+flags_unshaded = true
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 1, 1, 1, 1 )
+albedo_texture = ExtResource( 5 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 1, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Albedo", "Emission", "Flags", "UV1", "Vertex Color" ]
+
+[sub_resource type="Gradient" id=15]
+
+offsets = PoolRealArray( 0, 0.745562, 1 )
+colors = PoolColorArray( 0, 0.90625, 1, 1, 0, 0.320313, 1, 0.89502, 0, 0.179688, 1, 0.0663137 )
+
+[sub_resource type="GradientTexture" id=16]
+
+flags = 4
+gradient = SubResource( 15 )
+width = 2048
+
+[sub_resource type="Curve" id=17]
+
+min_value = 0.0
+max_value = 1.0
+bake_resolution = 100
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.274414 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=18]
+
+flags = 4
+width = 2048
+curve = SubResource( 17 )
+
+[sub_resource type="ParticlesMaterial" id=19]
+
+render_priority = 0
+trail_divisor = 3
+emission_shape = 0
+flag_align_y = true
+flag_rotate_y = false
+flag_disable_z = false
+spread = 45.0
+flatness = 0.0
+gravity = Vector3( 0, 0, -5 )
+initial_velocity = 1.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = -1.0
+radial_accel_random = 0.0
+tangential_accel = 1.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 2.0
+scale_random = 0.0
+scale_curve = SubResource( 18 )
+color_ramp = SubResource( 16 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Damping", "Emission Shape", "Flags", "Gravity", "Initial Velocity", "Linear Accel", "Radial Accel", "Scale", "Spread", "Tangential Accel", "Trail" ]
+
+[sub_resource type="SpatialMaterial" id=20]
+
+render_priority = 0
+flags_transparent = true
+flags_unshaded = true
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 2
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 1, 1, 1, 1 )
+albedo_texture = ExtResource( 3 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 16.0
+emission_operator = 0
+emission_on_uv2 = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Albedo", "Emission", "Flags", "Metallic", "Parameters", "UV1", "Vertex Color" ]
+
+[sub_resource type="Gradient" id=21]
+
+offsets = PoolRealArray( 0.0295858, 0.284024, 0.905325 )
+colors = PoolColorArray( 0.371094, 0.94104, 1, 1, 0.105469, 0.517792, 1, 1, 0, 0.390625, 1, 0 )
+
+[sub_resource type="GradientTexture" id=22]
+
+flags = 4
+gradient = SubResource( 21 )
+width = 2048
+
+[sub_resource type="ParticlesMaterial" id=23]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = false
+spread = 45.0
+flatness = 1.0
+gravity = Vector3( 0, 0.1, -0.1 )
+initial_velocity = 0.1
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+linear_accel = -54.29
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 1.0
+scale_random = 0.0
+color_ramp = SubResource( 22 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Color", "Damping", "Emission Shape", "Flags", "Gravity", "Initial Velocity", "Linear Accel", "Radial Accel", "Spread", "Tangential Accel" ]
+
+[node name="EMPGunMuzzleFlash" type="Spatial"]
+
+script = ExtResource( 1 )
+useAnimationPlayer = true
+animationName = "Play"
+oneShot = true
+destroyOnFinished = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Play = SubResource( 1 )
+blend_times = [  ]
+
+[node name="SpikeRing" type="Particles" parent="." index="1"]
+
+transform = Transform( -1, 0, 8.74228e-008, 0, 1, 0, -8.74228e-008, 0, -1, 0.0916009, 0.167266, 0 )
+layers = 1
+material_override = SubResource( 2 )
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+emitting = false
+amount = 5
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 3.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 7 )
+draw_passes = 1
+draw_pass_1 = ExtResource( 2 )
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Time" ]
+
+[node name="Spike" type="Particles" parent="." index="2"]
+
+transform = Transform( -1, 0, 8.74228e-008, 0, 1, 0, -8.74228e-008, 0, -1, 0.0636437, 0.00877523, 0 )
+layers = 1
+material_override = SubResource( 8 )
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+emitting = false
+amount = 1
+lifetime = 0.25
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 13 )
+draw_passes = 1
+draw_pass_1 = ExtResource( 4 )
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Time" ]
+
+[node name="Sparks" type="Particles" parent="." index="3"]
+
+layers = 1
+material_override = SubResource( 14 )
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+emitting = false
+amount = 10
+lifetime = 1.3
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.5
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 19 )
+draw_passes = 1
+draw_pass_1 = ExtResource( 6 )
+_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Process Material", "Time" ]
+
+[node name="Lightning" type="Particles" parent="." index="4"]
+
+layers = 1
+material_override = SubResource( 20 )
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+emitting = false
+amount = 8
+lifetime = 0.25
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 23 )
+draw_passes = 1
+draw_pass_1 = ExtResource( 7 )
+_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Process Material", "Time" ]
+
+[node name="OmniLight" type="OmniLight" parent="." index="5"]
+
+layers = 1
+light_color = Color( 0, 0, 0, 1 )
+light_energy = 13.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 13.0
+omni_attenuation = 1.0
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Light", "Omni" ]
+
+

@@ -1,0 +1,149 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Weapon/Scripts/WeaponMount.gd" type="Script" id=1]
+[ext_resource path="res://Player/Model/PlayerRocketLauncher.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Materials/PlayerWeapons.tres" type="Material" id=3]
+[ext_resource path="res://Weapon/Scripts/Weapon.gd" type="Script" id=4]
+[ext_resource path="res://Audio/Weapons/RocketLaunchreShot.wav" type="AudioStream" id=5]
+[ext_resource path="res://VFX/Weapons/RocketLauncher/RocketLauncherMuzzleFlash.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Audio/Weapons/RocketLauncherShotOC.wav" type="AudioStream" id=7]
+
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "Default"
+length = 0.45
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("RocketLauncherDefault:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -0.5 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "Overclock"
+length = 0.4
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("RocketLauncherOverclock:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -1 ), Vector3( 0, 0, 0 ) ]
+}
+
+[node name="RocketLauncherMount" type="Spatial"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+defaultWeaponPath = NodePath("RocketLauncherDefault")
+overclockWeaponPath = NodePath("RocketLauncherOverclock")
+
+[node name="RocketLauncherDefault" type="MeshInstance" parent="." index="0"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 2 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 3 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform", "material" ]
+projectileName = "Rocket"
+fireRate = 0.5
+randomSpread = false
+spreadRadian = 0.1
+bulletAmount = 1
+
+[node name="ShootAudio" type="AudioStreamPlayer" parent="RocketLauncherDefault" index="0"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "VFX"
+
+[node name="MuzzlePosition" type="Position3D" parent="RocketLauncherDefault" index="1"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.606794, 0.972165, 1.48258 )
+
+[node name="MuzzleFlash" parent="RocketLauncherDefault" index="2" instance=ExtResource( 6 )]
+
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0.616298, 0.969182, 1.48774 )
+forceRestart = false
+
+[node name="RocketLauncherOverclock" type="MeshInstance" parent="." index="1"]
+
+transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 2 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 3 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform", "material" ]
+projectileName = "Rocket"
+fireRate = 0.5
+randomSpread = false
+spreadRadian = 6.3
+bulletAmount = 8
+
+[node name="ShootAudio" type="AudioStreamPlayer" parent="RocketLauncherOverclock" index="0"]
+
+stream = ExtResource( 7 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "VFX"
+
+[node name="MuzzlePosition" type="Position3D" parent="RocketLauncherOverclock" index="1"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.606093, 0.966393, 1.47554 )
+
+[node name="MuzzleFlash" parent="RocketLauncherOverclock" index="2" instance=ExtResource( 6 )]
+
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0.596287, 0.962496, 1.47069 )
+forceRestart = false
+
+[node name="KickBackPlayer" type="AnimationPlayer" parent="." index="2"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Default = SubResource( 1 )
+anims/Overclock = SubResource( 2 )
+blend_times = [  ]
+
+

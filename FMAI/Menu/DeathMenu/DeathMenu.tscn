@@ -1,0 +1,800 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Menu/Graphics/theme/defaultTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Menu/DeathMenu/DeathMenu.gd" type="Script" id=2]
+[ext_resource path="res://Menu/GlitchEffect/Glitch.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Menu/Graphics/Background/BackgroundBlack.png" type="Texture" id=4]
+[ext_resource path="res://Menu/Graphics/theme/MasterTheme.tres" type="Theme" id=5]
+[ext_resource path="res://Menu/LoadingScreen/LoadingIcon.png" type="Texture" id=6]
+[ext_resource path="res://Menu/Graphics/theme/font/FontDerelictRegularBig.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Menu/DeathMenu/StatsValue.gd" type="Script" id=8]
+[ext_resource path="res://Menu/Graphics/Panel/Line.png" type="Texture" id=9]
+[ext_resource path="res://Menu/LeaderBoard/DeathLeaderboard/DeathLeaderboard.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Menu/LeaderBoard/LeaderBoardQuery.tscn" type="PackedScene" id=11]
+
+[node name="DeathMenu" type="Control"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Pause", "Visibility" ]
+
+[node name="Glitch" parent="." index="0" instance=ExtResource( 3 )]
+
+[node name="BackgroundBlur" type="TextureRect" parent="." index="1"]
+
+pause_mode = 2
+modulate = Color( 1, 1, 1, 0.563529 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_right = 2.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Grow Direction", "Visibility" ]
+
+[node name="BackgroundPanel" type="Panel" parent="." index="2"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 281.0
+margin_top = 114.0
+margin_right = 1641.0
+margin_bottom = 914.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 5 )
+_sections_unfolded = [ "Pause", "Rect", "Theme" ]
+
+[node name="DeathLogo" type="TextureRect" parent="BackgroundPanel" index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -80.0
+margin_top = 44.0
+margin_right = 80.0
+margin_bottom = 186.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 6 )
+stretch_mode = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="Header" type="Label" parent="BackgroundPanel" index="1"]
+
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -620.0
+margin_top = 195.0
+margin_right = 620.0
+margin_bottom = 245.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "Destruction Protocol"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Focus", "Margin", "custom_fonts" ]
+
+[node name="Score" type="Label" parent="BackgroundPanel" index="2"]
+
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -620.0
+margin_top = -142.0
+margin_right = 620.0
+margin_bottom = -92.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "Score"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Stats" type="HBoxContainer" parent="BackgroundPanel" index="3"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -676.0
+margin_top = -20.0
+margin_right = 676.0
+margin_bottom = 153.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+script = ExtResource( 8 )
+_sections_unfolded = [ "Margin", "Rect", "custom_constants" ]
+
+[node name="LifeTime" type="VBoxContainer" parent="BackgroundPanel/Stats" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 61.0
+margin_right = 361.0
+margin_bottom = 173.0
+rect_min_size = Vector2( 300, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Header" type="Label" parent="BackgroundPanel/Stats/LifeTime" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 300.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 7 )
+text = "LifeTIme"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Label" type="Label" parent="BackgroundPanel/Stats/LifeTime" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 54.0
+margin_right = 300.0
+margin_bottom = 173.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "12345Infos1234"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Line" type="TextureRect" parent="BackgroundPanel/Stats" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 365.0
+margin_right = 367.0
+margin_bottom = 173.0
+rect_min_size = Vector2( 2, 5 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Rect" ]
+
+[node name="Killed" type="VBoxContainer" parent="BackgroundPanel/Stats" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 371.0
+margin_right = 671.0
+margin_bottom = 173.0
+rect_min_size = Vector2( 300, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Header" type="Label" parent="BackgroundPanel/Stats/Killed" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 300.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 7 )
+text = "Enemies Killed"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Label" type="Label" parent="BackgroundPanel/Stats/Killed" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 54.0
+margin_right = 300.0
+margin_bottom = 173.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "12345Infos1234"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Line2" type="TextureRect" parent="BackgroundPanel/Stats" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 675.0
+margin_right = 677.0
+margin_bottom = 173.0
+rect_min_size = Vector2( 2, 5 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Rect" ]
+
+[node name="Accuracy" type="VBoxContainer" parent="BackgroundPanel/Stats" index="4"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 681.0
+margin_right = 981.0
+margin_bottom = 173.0
+rect_min_size = Vector2( 300, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Header" type="Label" parent="BackgroundPanel/Stats/Accuracy" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 300.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 7 )
+text = "Accuracy"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Label" type="Label" parent="BackgroundPanel/Stats/Accuracy" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 54.0
+margin_right = 300.0
+margin_bottom = 173.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "12345Infos1234"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Line3" type="TextureRect" parent="BackgroundPanel/Stats" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 985.0
+margin_right = 987.0
+margin_bottom = 173.0
+rect_min_size = Vector2( 2, 5 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Rect" ]
+
+[node name="WeaponStats" type="VBoxContainer" parent="BackgroundPanel/Stats" index="6"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 991.0
+margin_right = 1291.0
+margin_bottom = 173.0
+rect_min_size = Vector2( 300, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Header" type="Label" parent="BackgroundPanel/Stats/WeaponStats" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 300.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 7 )
+text = "Weapon Time"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="Label" type="Label" parent="BackgroundPanel/Stats/WeaponStats" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 54.0
+margin_right = 300.0
+margin_bottom = 91.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "1234567891011121314"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label2" type="Label" parent="BackgroundPanel/Stats/WeaponStats" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 95.0
+margin_right = 300.0
+margin_bottom = 132.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "12345Infos1234"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label3" type="Label" parent="BackgroundPanel/Stats/WeaponStats" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 136.0
+margin_right = 300.0
+margin_bottom = 173.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "12345Infos1234"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Buttons" type="HBoxContainer" parent="BackgroundPanel" index="4"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = -138.0
+margin_right = -50.0
+margin_bottom = -50.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 0
+alignment = 1
+_sections_unfolded = [ "Margin", "Rect", "Theme", "custom_constants" ]
+
+[node name="BackToMenuButton" type="Button" parent="BackgroundPanel/Buttons" index="0"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 55.0
+margin_right = 365.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 310, 88 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_neighbour_left = NodePath("../Restart")
+focus_neighbour_right = NodePath("../Leaderboard")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource( 5 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Back To Menu"
+flat = false
+align = 0
+_sections_unfolded = [ "Focus", "Textures", "Theme" ]
+
+[node name="Leaderboard" type="Button" parent="BackgroundPanel/Buttons" index="1"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 475.0
+margin_right = 785.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 310, 88 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_neighbour_left = NodePath("../BackToMenuButton")
+focus_neighbour_right = NodePath("../Restart")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource( 5 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Leaderboard"
+flat = false
+align = 0
+_sections_unfolded = [ "Focus", "Textures", "Theme" ]
+
+[node name="Restart" type="Button" parent="BackgroundPanel/Buttons" index="2"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 895.0
+margin_right = 1205.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 310, 88 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_neighbour_left = NodePath("../Leaderboard")
+focus_neighbour_right = NodePath("../BackToMenuButton")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource( 5 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Restart"
+flat = false
+align = 0
+_sections_unfolded = [ "Focus", "Rect", "Textures", "Theme" ]
+
+[node name="Leaderboard" type="Panel" parent="." index="3"]
+
+pause_mode = 2
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 281.0
+margin_top = 114.0
+margin_right = 1641.0
+margin_bottom = 914.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 5 )
+_sections_unfolded = [ "Pause", "Rect", "Theme" ]
+
+[node name="Header" type="Label" parent="Leaderboard" index="0"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_top = 50.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "Leaderboard"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Focus", "Margin", "custom_fonts" ]
+
+[node name="Line" type="TextureRect" parent="Leaderboard" index="1"]
+
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -300.0
+margin_top = 107.0
+margin_right = 300.0
+margin_bottom = 110.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Rect" ]
+
+[node name="Deathleaderboard" parent="Leaderboard" index="2" instance=ExtResource( 10 )]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -630.0
+margin_top = -280.0
+margin_right = 630.0
+margin_bottom = 252.0
+rect_min_size = Vector2( 550, 0 )
+_sections_unfolded = [ "Margin", "Patch Margin", "Pause", "Rect", "Size Flags" ]
+
+[node name="Buttons" type="Control" parent="Leaderboard" index="3"]
+
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -575.0
+margin_top = -138.0
+margin_right = 575.0
+margin_bottom = -50.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Margin", "Rect", "Size Flags", "Theme", "custom_constants" ]
+
+[node name="Back" type="Button" parent="Leaderboard/Buttons" index="0"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 310.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 310, 88 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_neighbour_left = NodePath("../LeaderBoardQuery/Submit")
+focus_neighbour_right = NodePath("../LeaderBoardQuery/Submit")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme = ExtResource( 5 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Back"
+flat = false
+align = 0
+_sections_unfolded = [ "Focus", "Rect", "Size Flags", "Textures", "Theme" ]
+
+[node name="LeaderBoardQuery" parent="Leaderboard/Buttons" index="1" instance=ExtResource( 11 )]
+
+pause_mode = 2
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -765.0
+margin_right = 0.0
+size_flags_horizontal = 2
+size_flags_vertical = 4
+_sections_unfolded = [ "Pause", "Rect", "Size Flags", "Theme", "custom_constants" ]
+closeFocus = NodePath("../Back")
+
+[node name="Submit" parent="Leaderboard/Buttons/LeaderBoardQuery" index="2"]
+
+focus_neighbour_left = NodePath("../../Back")
+focus_neighbour_right = NodePath("../../Back")
+_sections_unfolded = [ "Focus", "Margin", "Rect", "Theme" ]
+
+[connection signal="pressed" from="BackgroundPanel/Buttons/BackToMenuButton" to="." method="onBackToMenuButtonPressed"]
+
+[connection signal="pressed" from="BackgroundPanel/Buttons/Leaderboard" to="." method="onLeaderBoardButtonPressed"]
+
+[connection signal="pressed" from="BackgroundPanel/Buttons/Restart" to="." method="onRestartButtonPressed"]
+
+[connection signal="pressed" from="Leaderboard/Buttons/Back" to="." method="onLeaderBoardButtonPressed"]
+
+[connection signal="requestCompleted" from="Leaderboard/Buttons/LeaderBoardQuery" to="Leaderboard/Deathleaderboard" method="startRequest"]
+
+
+[editable path="Leaderboard/Buttons/LeaderBoardQuery"]

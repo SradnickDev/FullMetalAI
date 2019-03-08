@@ -1,0 +1,174 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Maps/Env/Decoration/BuildingDecoration/BuildingGate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/Env/BuildingParts/PartBuildingMiddleReinforced.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Maps/Env/BuildingParts/PartBuildingMiddle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Maps/Env/BuildingParts/PartBuildingCorner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Maps/Env/BuildingParts/PartRoofBeam.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Maps/Env/BuildingParts/PartPillar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Textures/Building/Building1Textur.png" type="Texture" id=7]
+[ext_resource path="res://Maps/Env/BuildingParts/PartBuildingEnd.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Maps/Env/BuildingParts/PartCorner.tscn" type="PackedScene" id=9]
+
+[sub_resource type="SpatialMaterial" id=1]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 1, 1, 1, 1 )
+albedo_texture = ExtResource( 7 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Albedo", "Flags" ]
+
+[sub_resource type="BoxShape" id=2]
+
+extents = Vector3( 6.60579, 1, 2.90399 )
+
+[node name="Building3x3L" type="StaticBody" index="0"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 8
+collision_mask = 0
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="BuildingGate" parent="." index="0" instance=ExtResource( 1 )]
+
+transform = Transform( 6.70552e-008, 0, -1, 0, 1, 0, 1, 0, 6.70552e-008, 0, 0, 6 )
+
+[node name="BuildingGate2" parent="." index="1" instance=ExtResource( 1 )]
+
+transform = Transform( 6.70552e-008, 0, 1, 0, 1, 0, -1, 0, 6.70552e-008, 4, 0, 2 )
+
+[node name="PartBuildingMiddleReinforced" parent="." index="2" instance=ExtResource( 2 )]
+
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 2, 0, 2 )
+
+[node name="PartBuildingMiddle" parent="." index="3" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2 )
+
+[node name="PartBuildingCorner" parent="." index="4" instance=ExtResource( 4 )]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 2, 0, -2 )
+
+[node name="PartRoofBeam" parent="." index="5" instance=ExtResource( 5 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -2 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartRoofBeam5" parent="." index="6" instance=ExtResource( 5 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.1, -2 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartRoofBeam2" parent="." index="7" instance=ExtResource( 5 )]
+
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 2, 0.1, 4 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartPillar2" parent="." index="8" instance=ExtResource( 6 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
+material/0 = SubResource( 1 )
+
+[node name="PartPillar5" parent="." index="9" instance=ExtResource( 6 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="PartPillar8" parent="." index="10" instance=ExtResource( 6 )]
+
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -4, 0, 0 )
+
+[node name="PartPillar3" parent="." index="11" instance=ExtResource( 6 )]
+
+[node name="PartBuildingEnd" parent="." index="12" instance=ExtResource( 8 )]
+
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 2, 0, 6 )
+
+[node name="PartBuildingEnd2" parent="." index="13" instance=ExtResource( 8 )]
+
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, -6, 0, -2 )
+
+[node name="PartCorner5" parent="." index="14" instance=ExtResource( 9 )]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 4, 0, 4 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartCorner2" parent="." index="15" instance=ExtResource( 9 )]
+
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, -4, 0, -4 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartCorner9" parent="." index="16" instance=ExtResource( 9 )]
+
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 0, -4 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="PartCorner8" parent="." index="17" instance=ExtResource( 9 )]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 4, 0, 0 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="18"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -2 )
+shape = SubResource( 2 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2" type="CollisionShape" parent="." index="19"]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 2, 1, 2 )
+shape = SubResource( 2 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+

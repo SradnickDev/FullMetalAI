@@ -1,0 +1,375 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://Weapon/Projectile/EMPOverclocked.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Weapon/Projectile/Bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Weapon/Projectile/Rocket.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Weapon/Projectile/EMP.tscn" type="PackedScene" id=4]
+[ext_resource path="res://VFX/Characters/Player/PickUpEffectAttackSpeed.tscn" type="PackedScene" id=5]
+[ext_resource path="res://VFX/Characters/Player/PickUpEffectDecoy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://VFX/Characters/Player/PickUpEffectHeal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://VFX/Characters/Enemy/EnemyAttack.tscn" type="PackedScene" id=8]
+[ext_resource path="res://VFX/Environment/TowerEffect.tscn" type="PackedScene" id=9]
+[ext_resource path="res://VFX/Environment/Explosion_v2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://VFX/Environment/ExplosionPlayerDeath_v1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://VFX/Environment/Explosion_v1.tscn" type="PackedScene" id=12]
+[ext_resource path="res://VFX/Characters/Enemy/EnemyDeathEffect.tscn" type="PackedScene" id=13]
+[ext_resource path="res://VFX/Characters/Enemy/EnemyHoverEffect.tscn" type="PackedScene" id=14]
+[ext_resource path="res://VFX/Characters/Player/PickUpEffectShield.tscn" type="PackedScene" id=15]
+[ext_resource path="res://VFX/Characters/StunEffect.tscn" type="PackedScene" id=16]
+[ext_resource path="res://VFX/Characters/Player/PickUpEffectMoveSpeed.tscn" type="PackedScene" id=17]
+[ext_resource path="res://VFX/Characters/HitEffectSparkle.tscn" type="PackedScene" id=18]
+[ext_resource path="res://VFX/Weapons/EMP/EMPGunMuzzleFlash.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Enemy/TankEnemy.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Enemy/DroneEnemy.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Enemy/CloakerEnemy.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Enemy/KamikazeEnemy.tscn" type="PackedScene" id=23]
+[ext_resource path="res://VFX/Weapons/MachineGun/MachineGunMuzzleFlash.tscn" type="PackedScene" id=24]
+[ext_resource path="res://VFX/Weapons/RocketLauncher/RocketLauncherMuzzleFlash.tscn" type="PackedScene" id=25]
+
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Spatial
+
+export(bool) var useAnimationPlayer = true # True animation will be used, false Particles
+export(String) var animationName
+export(bool) var oneShot = true #Animation or Particles
+export(bool) var destroyOnFinished = false #only Animation
+
+var animationPlayer
+var particle
+
+func _ready():
+	init()
+
+func init():
+	if useAnimationPlayer:
+		getAnimationPlayer()
+		setAnimationOneShot()
+	else:
+		setParticleToOneShot()
+
+func setAnimationOneShot():
+	animationPlayer.get_animation(animationName).loop = !oneShot
+	
+func setParticleToOneShot():
+	for child in get_children():
+		if child.is_class(\"Particle\"):
+			child.one_shot()
+	
+func getAnimationPlayer():
+	for child in get_children():
+		if child.is_class(\"AnimationPlayer\"):
+			animationPlayer = child
+			if destroyOnFinished:
+				animationPlayer.connect(\"animation_finished\",self,\"onFinished\")
+
+func play():
+	print(\"smtg\")
+	if useAnimationPlayer:
+		if animationPlayer.is_playing(): return
+		animationPlayer.play(animationName)
+	else:
+		playParticles()
+		
+func playParticles():
+	for child in get_children():
+		if child.is_class(\"Particle\"):
+			child.emitting = true
+			
+func onFinished(name):
+	queue_free()"
+
+[sub_resource type="SpatialMaterial" id=2]
+
+render_priority = 0
+flags_transparent = true
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 1, 1, 1, 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = true
+emission = Color( 0, 0.671875, 1, 1 )
+emission_energy = 2.5
+emission_operator = 0
+emission_on_uv2 = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Albedo", "Emission", "Flags", "Parameters", "Vertex Color" ]
+
+[sub_resource type="Gradient" id=3]
+
+offsets = PoolRealArray( 0, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=4]
+
+flags = 4
+gradient = SubResource( 3 )
+width = 2048
+
+[sub_resource type="ParticlesMaterial" id=5]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 1
+emission_sphere_radius = 0.5
+flag_align_y = true
+flag_rotate_y = true
+flag_disable_z = false
+spread = 0.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.0
+initial_velocity_random = 0.0
+angular_velocity = 360.0
+angular_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 0.3
+scale_random = 0.1
+color_ramp = SubResource( 4 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Damping", "Emission Shape", "Flags", "Gravity", "Initial Velocity", "Linear Accel", "Radial Accel", "Scale", "Spread", "Tangential Accel", "Trail" ]
+
+[node name="ShaderCache" type="Spatial"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.156, 0 )
+
+[node name="EMPOverclock" parent="." index="0" instance=ExtResource( 1 )]
+
+editor/display_folded = true
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+
+[node name="HitAudio" parent="EMPOverclock" index="3"]
+
+volume_db = -80.0
+
+[node name="Bullet" parent="." index="1" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+
+[node name="HitAudio" parent="Bullet" index="1"]
+
+volume_db = -80.0
+
+[node name="ReflectAudio" parent="Bullet" index="2"]
+
+volume_db = -80.0
+
+[node name="Rocket" parent="." index="2" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+
+[node name="HitAudio" parent="Rocket/EffectParent" index="0"]
+
+volume_db = -80.0
+
+[node name="EMP" parent="." index="3" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+
+[node name="HitAudio" parent="EMP" index="3"]
+
+volume_db = -80.0
+
+[node name="AttackspeedPickUpEffect" parent="." index="4" instance=ExtResource( 5 )]
+
+[node name="DecoyPickUpEffect" parent="." index="5" instance=ExtResource( 6 )]
+
+[node name="HealPickUpEffect" parent="." index="6" instance=ExtResource( 7 )]
+
+[node name="EnemyAttack" parent="." index="7" instance=ExtResource( 8 )]
+
+[node name="TowerEffect" parent="." index="8" instance=ExtResource( 9 )]
+
+[node name="Explosion_v2" parent="." index="9" instance=ExtResource( 10 )]
+
+script = SubResource( 1 )
+
+[node name="NukePlayerDeath" parent="." index="10" instance=ExtResource( 11 )]
+
+[node name="Explosion02" parent="." index="11" instance=ExtResource( 12 )]
+
+[node name="EnemyDeathEffect" parent="." index="12" instance=ExtResource( 13 )]
+
+[node name="EnemyHoverEffect" parent="." index="13" instance=ExtResource( 14 )]
+
+[node name="ShieldPowerUpEffect" parent="." index="14" instance=ExtResource( 15 )]
+
+[node name="StunEffect" parent="." index="15" instance=ExtResource( 16 )]
+
+material_override = SubResource( 2 )
+process_material = SubResource( 5 )
+
+[node name="SpeedPickUpEffect" parent="." index="16" instance=ExtResource( 17 )]
+
+[node name="HitEffectSparkle" parent="." index="17" instance=ExtResource( 18 )]
+
+editor/display_folded = true
+
+[node name="EMPGunMuzzleFlash" parent="." index="18" instance=ExtResource( 19 )]
+
+forceRestart = false
+
+[node name="TankEnemyT" parent="." index="19" instance=ExtResource( 20 )]
+
+editor/display_folded = true
+maxHealth = 100.0
+speed = 0.1
+damagePerHit = 0.1
+attackRange = 0.1
+attackRate = 10.0
+shieldProbability = 0.01
+
+[node name="MeshInstance" parent="TankEnemyT" index="3"]
+
+transform = Transform( -1.50922, 0, -1.31235, 0, 2, 0, 1.31235, 0, -1.50922, -1.78526, 2, 0 )
+
+[node name="AttackAudio" parent="TankEnemyT" index="9"]
+
+volume_db = -80.0
+
+[node name="DeathAudio" parent="TankEnemyT/EffectParent" index="1"]
+
+volume_db = -80.0
+
+[node name="DirectionIndicator" parent="TankEnemyT" index="12"]
+
+visible = false
+
+[node name="DroneEnemyT" parent="." index="20" instance=ExtResource( 21 )]
+
+editor/display_folded = true
+maxHealth = 100.0
+speed = 0.1
+damagePerHit = 0.1
+attackRange = 0.1
+attackRate = 10.0
+shieldProbability = 0.01
+
+[node name="AttackAudio" parent="DroneEnemyT" index="9"]
+
+volume_db = -80.0
+
+[node name="DeathAudio" parent="DroneEnemyT/EffectParent" index="1"]
+
+volume_db = -80.0
+
+[node name="DirectionIndicator" parent="DroneEnemyT" index="12"]
+
+visible = false
+
+[node name="CloakerEnemyT" parent="." index="21" instance=ExtResource( 22 )]
+
+editor/display_folded = true
+maxHealth = 100.0
+speed = 0.1
+damagePerHit = 0.1
+attackRange = 0.1
+attackRate = 10.0
+shieldProbability = 0.01
+
+[node name="AttackAudio" parent="CloakerEnemyT" index="9"]
+
+volume_db = -80.0
+
+[node name="DeathAudio" parent="CloakerEnemyT/EffectParent" index="1"]
+
+volume_db = -80.0
+
+[node name="DirectionIndicator" parent="CloakerEnemyT" index="12"]
+
+visible = false
+
+[node name="KamikazeEnemy" parent="." index="22" instance=ExtResource( 23 )]
+
+editor/display_folded = true
+speed = 0.1
+damagePerHit = 0.1
+attackRange = 0.1
+attackRate = 10.0
+shieldProbability = 0.01
+
+[node name="AttackAudio" parent="KamikazeEnemy" index="10"]
+
+volume_db = -80.0
+
+[node name="DeathAudio" parent="KamikazeEnemy/EffectParent" index="2"]
+
+volume_db = -80.0
+
+[node name="DirectionIndicator" parent="KamikazeEnemy" index="13"]
+
+visible = false
+
+[node name="MachineGunMuzzleFlash" parent="." index="23" instance=ExtResource( 24 )]
+
+forceRestart = false
+
+[node name="RocketLauncherMuzzleFlash" parent="." index="24" instance=ExtResource( 25 )]
+
+forceRestart = false
+
+
+[editable path="EMPOverclock"]
+[editable path="Bullet"]
+[editable path="Rocket"]
+[editable path="EMP"]
+[editable path="TankEnemyT"]
+[editable path="DroneEnemyT"]
+[editable path="CloakerEnemyT"]
+[editable path="KamikazeEnemy"]
