@@ -18,6 +18,9 @@ in which the player has to overcome waves of hostile drones.
 [![Gameplay Screenshots / Video](img/Screen_2.png)](https://youtu.be/6XhnEPoo0u4)
 https://youtu.be/6XhnEPoo0u4
 
+
+[Build Download](https://github.com/SradnickDev/FullMetalAI/raw/master/Build/FullMetalAIRelease.zip)
+
 ### Documentation and Build
 
 I included some of the Documents i created.
