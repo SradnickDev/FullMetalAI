@@ -19,7 +19,7 @@ _data = {
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 }
 
-[node name="BaseGameScene" type="Node"]
+[node name="BaseGameScene" type="Node" index="0"]
 
 _sections_unfolded = [ "Pause", "Transform", "Visibility" ]
 

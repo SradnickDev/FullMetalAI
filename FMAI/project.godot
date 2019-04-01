@@ -28,11 +28,12 @@ settings/fps/force_fps=60
 
 window/size/width=1920
 window/size/height=1080
-window/size/resizable=false
-window/size/fullscreen=true
 window/handheld/emulate_mouse_from_touch=false
 mouse_cursor/custom_image="res://Menu/Graphics/Crossair.png"
 mouse_cursor/custom_image_hotspot=Vector2( 10, 20 )
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
+window/stretch/shrink="1"
 
 [input]
 

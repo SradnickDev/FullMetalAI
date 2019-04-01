@@ -12,7 +12,7 @@ size = Vector2( 2, 2 )
 subdivide_width = 0
 subdivide_depth = 0
 
-[node name="DefaultMap" type="Navigation"]
+[node name="DefaultMap" type="Navigation" index="0"]
 
 up_vector = Vector3( 0, 1, 0 )
 script = ExtResource( 1 )
