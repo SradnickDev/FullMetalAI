@@ -58,7 +58,6 @@ _sections_unfolded = [ "Rect", "Size Flags", "Theme" ]
 
 [node name="OptionsContent" parent="." index="3" instance=ExtResource( 6 )]
 
-editor/display_folded = true
 margin_left = 50.0
 margin_top = -140.0
 margin_right = 455.0

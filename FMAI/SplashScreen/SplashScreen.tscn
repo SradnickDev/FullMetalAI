@@ -37,7 +37,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0.2, 0.2 ), Vector2( 0.2, 0.2 ), Vector2( 0.61, 0.61 ), Vector2( 0.6, 0.6 ) ]
 }
 
-[node name="SplashScreen" type="TextureRect" index="0"]
+[node name="SplashScreen" type="TextureRect"]
 
 anchor_left = 0.0
 anchor_top = 0.0
