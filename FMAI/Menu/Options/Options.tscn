@@ -9,7 +9,7 @@
 [ext_resource path="res://Menu/Buttons/BackToMenuButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Debug/InputDeviceInfo.tscn" type="PackedScene" id=8]
 
-[node name="Options" type="TextureRect" index="0"]
+[node name="Options" type="TextureRect"]
 
 anchor_left = 0.0
 anchor_top = 0.0

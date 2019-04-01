@@ -26,15 +26,6 @@ func loadConfig():
 	
 	var windowMode = config.get_value(Section,Fullscreen, true)
 	
-	if OS.window_size.x == 1920:
-		OS.window_borderless = false
-		OS.window_fullscreen = windowMode
-	else:
-		OS.window_borderless = windowMode
-		OS.window_maximized = windowMode
-		OS.window_fullscreen = false
-		
-	
 	if config.has_section_key(Section,VSync):
 		var vSync = config.get_value(Section,VSync, false)
 		OS.vsync_enabled = vSync
