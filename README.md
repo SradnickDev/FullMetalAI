@@ -9,11 +9,24 @@ Homepage: https://fullmetalai.itch.io
 Full Metal AI is a fast paced 3D Twin-Stick-Shooter
 in which the player has to overcome waves of hostile drones.
 
-#### Gameplay Pillars
+#### Gameplay
 - fast & fluent Gameplay
 - a powerful (but risky) overclocking mechanic for each weapon
 - Game Modes for additional challenges and a richer gameplay experience
 - Power ups for immediate tactical improvement
+
+#### Roles
+ - Gameplay and Tool Programmer
+ 
+#### Engine / Languages 
+- Godot, GDScript, C#
+
+#### Responsiblities
+- Implemented AI, Wave System , Weapon System , online scoreboard
+- Implemente Threading to improve AI performance
+- Integrated a system to add new game modes using csv files
+- Created a tool for Game Designer to balance the game
+
 
 [![Gameplay Screenshots / Video](img/Screen_2.png)](https://youtu.be/6XhnEPoo0u4)
 https://youtu.be/6XhnEPoo0u4
