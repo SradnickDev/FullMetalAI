@@ -40,6 +40,6 @@ I included some of the Documents i created.
   - [Technical Design Document](/docs/FullMetalAITDD.pdf)
   - [Inherited Scene Workflow](/docs/Workflow/InheritedScene.pdf)
   - [VFX Particle preparation Workflow](/docs/Workflow/VFXParticlePreparation.pdf)
-  - [NavigationMesh](/docs/Workflow/NavigationMesh.pdf)
+  - [NavigationMesh](./Docs/Workflow/NavigationMesh.pdf)
   
   
