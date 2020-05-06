@@ -32,14 +32,14 @@ in which the player has to overcome waves of hostile drones.
 https://youtu.be/6XhnEPoo0u4
 
 
-[Build Download](/build/FullMetalAI.zip)
+[Build Download](./>Build/FullMetalAI.zip)
 
 ### Documentation and Build
 
 I included some of the Documents i created.
-  - [Technical Design Document](/docs/FullMetalAITDD.pdf)
-  - [Inherited Scene Workflow](/docs/Workflow/InheritedScene.pdf)
-  - [VFX Particle preparation Workflow](/docs/Workflow/VFXParticlePreparation.pdf)
+  - [Technical Design Document](./Docs/FullMetalAITDD.pdf)
+  - [Inherited Scene Workflow](./Docs/Workflow/InheritedScene.pdf)
+  - [VFX Particle preparation Workflow](./Docs/Workflow/VFXParticlePreparation.pdf)
   - [NavigationMesh](./Docs/Workflow/NavigationMesh.pdf)
   
   
